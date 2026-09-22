@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=nmap
+Comment=Network mapper
+Exec=mate-terminal --hide-menubar -t "nmap" -- cfl-run nmap
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

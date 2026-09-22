@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=CFL Forensics installer (boot option)
+Exec=/usr/local/bin/cfl-maybe-install
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

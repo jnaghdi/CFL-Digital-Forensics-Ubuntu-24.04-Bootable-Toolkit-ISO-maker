@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=vshadowinfo
+Comment=Volume Shadow Copy information
+Exec=mate-terminal --hide-menubar -t "vshadowinfo" -- cfl-run vshadowinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

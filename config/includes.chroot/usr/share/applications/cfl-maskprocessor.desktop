@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=maskprocessor
+Comment=Mask attack generator
+Exec=mate-terminal --hide-menubar -t "maskprocessor" -- cfl-run maskprocessor
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

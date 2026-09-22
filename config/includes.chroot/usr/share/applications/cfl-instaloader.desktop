@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Instaloader
+Comment=Download and analyse public Instagram data
+Exec=mate-terminal --hide-menubar -t "Instaloader" -- cfl-run instaloader
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

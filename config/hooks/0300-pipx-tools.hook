@@ -1,0 +1,49 @@
+#!/bin/bash
+# CFL Forensics - Python-based forensics tools installed with pipx (isolated venvs)
+echo "=== [tools] pipx tools ==="
+mkdir -p /var/log/cfl-forensics
+LOG=/var/log/cfl-forensics/third-party-tools.log
+touch "$LOG"
+
+export PIPX_HOME=/opt/pipx
+export PIPX_BIN_DIR=/usr/local/bin
+export PIPX_DEFAULT_PYTHON=/usr/bin/python3
+mkdir -p "$PIPX_HOME"
+
+# Tier 1: core tools - expected to succeed
+for tool in volatility3 mitmproxy oletools theharvester pysim ghunt sslyze recon-ng plaso; do
+    if pipx install "$tool" >> "$LOG" 2>&1; then
+        echo "OK   pipx $tool" >> "$LOG"
+    else
+        echo "WARN pipx $tool failed" >> "$LOG"
+    fi
+done
+
+# OnionSearch (GPL-3, dark-web search - CSI Linux fork is pip-packaged)
+# Needs the tor service running at use time (see docs/CSI-COMPARISON.md).
+if pipx install "git+https://github.com/CSILinux/OnionSearch.git" >> "$LOG" 2>&1; then
+    echo "OK   pipx onionsearch (git)" >> "$LOG"
+else
+    echo "WARN pipx onionsearch (git) failed" >> "$LOG"
+fi
+
+# Tier 2: heavier/optional - best effort
+#   CSI Linux / Parrot parity (OSINT + mobile), all on PyPI:
+#     holehe / maigret  email -> accounts, username -> profiles
+#     socialscan        username/email availability & OSINT
+#     h8mail            email breach/credential OSINT
+#     toutatis          Instagram account OSINT
+#     pyhindsight       browser-history forensics (Chrome/Edge/Brave)
+#     mvt               Mobile Verification Toolkit (iOS/Android IOC triage)
+#     andriller         Android forensic extraction
+for tool in spiderfoot osrframework maryam waymore \
+            holehe maigret socialscan h8mail toutatis \
+            pyhindsight mvt andriller; do
+    if pipx install "$tool" >> "$LOG" 2>&1; then
+        echo "OK   pipx $tool" >> "$LOG"
+    else
+        echo "WARN pipx $tool (optional) failed" >> "$LOG"
+    fi
+done
+
+chmod -R a+rX /opt/pipx 2>/dev/null || true

@@ -1,0 +1,7 @@
+# Signals intelligence / software-defined radio (CSI parity)
+rtl-sdr rtl-433 gqrx-sdr soapysdr-tools
+hackrf bladerf airspy airspyhf
+
+# Full SDR framework & analysers (Kali & Parrot parity)
+gnuradio inspectrum multimon-ng gr-osmosdr gr-iqbal
+gr-air-modes uhd-host chirp rfdump

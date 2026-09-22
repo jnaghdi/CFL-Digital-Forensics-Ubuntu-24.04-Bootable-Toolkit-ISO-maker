@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Photon
+Comment=Incredibly fast web crawler for OSINT
+Exec=mate-terminal --hide-menubar -t "Photon" -- cfl-run photon
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

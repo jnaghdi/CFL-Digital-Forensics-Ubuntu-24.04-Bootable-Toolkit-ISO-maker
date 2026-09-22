@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=yt-dlp
+Comment=Download online video/audio as evidence
+Exec=mate-terminal --hide-menubar -t "yt-dlp" -- cfl-run yt-dlp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;video;download;youtube;evidence;

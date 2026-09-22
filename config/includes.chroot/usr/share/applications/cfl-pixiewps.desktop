@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pixiewps
+Comment=WPS offline attack
+Exec=mate-terminal --hide-menubar -t "pixiewps" -- cfl-run pixiewps
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

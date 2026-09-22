@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fls
+Comment=List files in an image (TSK)
+Exec=mate-terminal --hide-menubar -t "fls" -- cfl-run fls
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

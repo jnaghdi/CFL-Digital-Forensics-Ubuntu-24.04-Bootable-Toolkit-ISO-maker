@@ -1,0 +1,13 @@
+# Document, media & metadata analysis
+mat2 libimage-exiftool-perl exiv2 exif
+exifprobe exiftags metacam missidentify
+catdoc antiword docx2txt unrtf
+wv poppler-utils mupdf-tools qpdf
+pecomato psrip ansifilter mediainfo
+ffmpeg sox pngcheck
+
+# PDF history recovery, OCR & media analysis (CSI parity)
+pdfresurrect ocrmypdf audacity vokoscreen-ng
+
+# Microsoft Access database tools (Kali & Parrot parity)
+mdbtools

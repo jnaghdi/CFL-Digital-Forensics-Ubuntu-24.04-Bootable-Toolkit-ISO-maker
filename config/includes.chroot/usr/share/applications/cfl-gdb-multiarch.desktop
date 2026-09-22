@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=gdb-multiarch
+Comment=Debugger for binaries of any architecture
+Exec=mate-terminal --hide-menubar -t "gdb-multiarch" -- cfl-run gdb-multiarch
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;debugger;arm;mips;

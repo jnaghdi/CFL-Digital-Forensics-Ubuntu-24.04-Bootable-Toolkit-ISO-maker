@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=safecopy
+Comment=Fault-tolerant data recovery
+Exec=mate-terminal --hide-menubar -t "safecopy" -- cfl-run safecopy
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

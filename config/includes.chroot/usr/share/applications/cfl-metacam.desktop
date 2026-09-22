@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=metacam
+Comment=Camera metadata extraction
+Exec=mate-terminal --hide-menubar -t "metacam" -- cfl-run metacam
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

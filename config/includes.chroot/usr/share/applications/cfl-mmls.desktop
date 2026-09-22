@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mmls
+Comment=Partition table listing (TSK)
+Exec=mate-terminal --hide-menubar -t "mmls" -- cfl-run mmls
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

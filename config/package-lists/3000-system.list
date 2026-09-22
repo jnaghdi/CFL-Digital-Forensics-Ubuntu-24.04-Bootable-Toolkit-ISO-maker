@@ -1,0 +1,6 @@
+# System & recovery utilities
+htop btop tmux screen mc tree pv rsync rclone aria2 ncdu duf
+p7zip-full unrar-free cabextract pigz zip zstd lz4 xz-utils
+vim nano less most bash-completion openssh-client usbutils pciutils lshw inxi
+# Deleted-file / carving recovery
+foremost scalpel extundelete ext3grep ext4magic gpart magicrescue recoverjpeg scrounge-ntfs fatcat testdisk

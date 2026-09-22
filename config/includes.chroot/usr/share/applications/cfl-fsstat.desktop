@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fsstat
+Comment=File system statistics (TSK)
+Exec=mate-terminal --hide-menubar -t "fsstat" -- cfl-run fsstat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

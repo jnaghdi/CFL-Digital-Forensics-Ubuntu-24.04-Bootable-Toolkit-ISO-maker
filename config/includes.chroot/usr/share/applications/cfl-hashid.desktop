@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hashid
+Comment=Hash type identifier
+Exec=mate-terminal --hide-menubar -t "hashid" -- cfl-run hashid
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

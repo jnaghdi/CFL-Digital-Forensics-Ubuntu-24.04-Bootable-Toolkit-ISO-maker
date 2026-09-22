@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ewfmount
+Comment=Mount an EWF (E01) image as a raw device file
+Exec=mate-terminal --hide-menubar -t "ewfmount" -- cfl-run ewfmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;imaging;

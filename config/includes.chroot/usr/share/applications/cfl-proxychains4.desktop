@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=proxychains
+Comment=Chain connections through SOCKS/HTTP proxies
+Exec=mate-terminal --hide-menubar -t "proxychains4" -- cfl-run proxychains4
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;proxy;tor;

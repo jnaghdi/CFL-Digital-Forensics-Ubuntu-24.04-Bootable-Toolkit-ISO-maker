@@ -1,0 +1,13 @@
+# build output and scratch (see cfl-build.conf)
+/work/
+/iso/
+/cache/
+# a finished image left at the root only (anchored: must NOT match config/includes.iso/)
+/*.iso
+*.log
+# (the ISO checksums live under /iso/, already ignored above;
+#  the source hash set in /hashes/ IS tracked)
+
+# editor/OS noise
+*~
+.DS_Store

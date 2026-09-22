@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mdk4
+Comment=Wi-Fi testing
+Exec=mate-terminal --hide-menubar -t "mdk4" -- cfl-run mdk4
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

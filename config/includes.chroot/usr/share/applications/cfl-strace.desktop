@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=strace
+Comment=System call tracer
+Exec=mate-terminal --hide-menubar -t "strace" -- cfl-run strace
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pcapfix
+Comment=Repair corrupted pcaps
+Exec=mate-terminal --hide-menubar -t "pcapfix" -- cfl-run pcapfix
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

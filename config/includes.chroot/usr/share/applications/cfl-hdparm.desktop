@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hdparm
+Comment=Drive identification and parameters
+Exec=mate-terminal --hide-menubar -t "hdparm" -- cfl-run hdparm
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

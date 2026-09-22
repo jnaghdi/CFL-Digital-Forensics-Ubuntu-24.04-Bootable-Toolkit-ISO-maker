@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mediainfo
+Comment=Media file metadata
+Exec=mate-terminal --hide-menubar -t "mediainfo" -- cfl-run mediainfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

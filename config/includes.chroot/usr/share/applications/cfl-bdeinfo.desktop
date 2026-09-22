@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bdeinfo
+Comment=BitLocker volume information
+Exec=mate-terminal --hide-menubar -t "bdeinfo" -- cfl-run bdeinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=partclone
+Comment=Partition imaging tool
+Exec=mate-terminal --hide-menubar -t "partclone" -- cfl-run partclone
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

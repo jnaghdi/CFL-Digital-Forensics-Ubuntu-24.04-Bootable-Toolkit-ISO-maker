@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ils
+Comment=List inode information (TSK)
+Exec=mate-terminal --hide-menubar -t "ils" -- cfl-run ils
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

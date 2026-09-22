@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dcfldd
+Comment=Enhanced dd for forensics
+Exec=mate-terminal --hide-menubar -t "dcfldd" -- cfl-run dcfldd
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

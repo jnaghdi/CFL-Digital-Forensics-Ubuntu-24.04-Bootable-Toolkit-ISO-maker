@@ -1,0 +1,23 @@
+#!/bin/bash
+# CFL Forensics - Ghidra (NSA reverse-engineering suite) from the official GitHub release
+echo "=== [tools] Ghidra ==="
+mkdir -p /var/log/cfl-forensics
+LOG=/var/log/cfl-forensics/third-party-tools.log
+touch "$LOG"
+
+URL=$(curl -s https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest \
+      | grep -o 'https://[^"]*ghidra_[^"]*public[^"]*\.zip' | head -1)
+if [ -n "$URL" ]; then
+    if curl -sL --retry 3 -o /tmp/ghidra.zip "$URL" \
+       && unzip -q /tmp/ghidra.zip -d /opt \
+       && mv /opt/ghidra_*_PUBLIC /opt/ghidra \
+       && chmod +x /opt/ghidra/ghidraRun; then
+        ln -sf /opt/ghidra/ghidraRun /usr/local/bin/ghidra
+        echo "OK   ghidra  ($URL)" >> "$LOG"
+    else
+        echo "WARN ghidra install failed" >> "$LOG"
+    fi
+    rm -f /tmp/ghidra.zip
+else
+    echo "WARN ghidra: could not resolve latest release URL" >> "$LOG"
+fi

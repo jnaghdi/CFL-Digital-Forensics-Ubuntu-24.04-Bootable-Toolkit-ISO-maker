@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hexedit
+Comment=Console hex editor
+Exec=mate-terminal --hide-menubar -t "hexedit" -- cfl-run hexedit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

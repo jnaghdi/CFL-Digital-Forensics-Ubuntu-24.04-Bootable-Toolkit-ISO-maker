@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=braa
+Comment=SNMP mass scanner
+Exec=mate-terminal --hide-menubar -t "braa" -- cfl-run braa
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

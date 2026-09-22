@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=radare2 (r2)
+Comment=Reverse-engineering framework - disassembler and debugger
+Exec=mate-terminal --hide-menubar -t "radare2" -- cfl-run radare2
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;disassembler;debugger;binary;

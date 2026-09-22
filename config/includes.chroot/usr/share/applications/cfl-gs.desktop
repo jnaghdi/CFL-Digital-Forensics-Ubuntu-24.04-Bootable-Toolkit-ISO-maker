@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ghostscript
+Comment=Render / normalise / repair PDF and PostScript
+Exec=mate-terminal --hide-menubar -t "gs" -- cfl-run gs
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;pdf;postscript;render;

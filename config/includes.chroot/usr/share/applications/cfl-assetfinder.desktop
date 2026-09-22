@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=assetfinder
+Comment=Domain and subdomain discovery
+Exec=mate-terminal --hide-menubar -t "assetfinder" -- cfl-run assetfinder
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

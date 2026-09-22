@@ -1,0 +1,4 @@
+# CFL Forensics - activated by `forensics-mode on`.
+# Newly attached block devices are flagged read-only for udisks2, so any
+# mount through the desktop (or udisksctl) is forced ro.
+ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]*|nvme[0-9]n[0-9]*|mmcblk[0-9]*|vd[a-z]*|xvd[a-z]*", ENV{UDISKS_READONLY}="1"

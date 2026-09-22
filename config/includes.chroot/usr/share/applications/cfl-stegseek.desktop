@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=stegseek
+Comment=Fast steghide cracker
+Exec=mate-terminal --hide-menubar -t "stegseek" -- cfl-run stegseek
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

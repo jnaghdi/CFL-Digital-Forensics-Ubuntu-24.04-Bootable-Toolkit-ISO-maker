@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ewfacquire
+Comment=Acquire in Expert Witness (EWF) format
+Exec=mate-terminal --hide-menubar -t "ewfacquire" -- cfl-run ewfacquire
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=firejail
+Comment=Application sandboxing
+Exec=mate-terminal --hide-menubar -t "firejail" -- cfl-run firejail
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

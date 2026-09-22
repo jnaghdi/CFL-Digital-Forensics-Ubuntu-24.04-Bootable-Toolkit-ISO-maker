@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Patator
+Comment=Multi-protocol brute-force tool
+Exec=mate-terminal --hide-menubar -t "Patator" -- cfl-run patator
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;

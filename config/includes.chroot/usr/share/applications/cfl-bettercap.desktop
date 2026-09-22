@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bettercap
+Comment=Network attack and monitoring framework
+Exec=mate-terminal --hide-menubar -t "bettercap" -- cfl-run bettercap
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

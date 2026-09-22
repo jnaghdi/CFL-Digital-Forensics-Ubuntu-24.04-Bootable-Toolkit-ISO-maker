@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SpiderFoot
+Comment=OSINT automation
+Exec=mate-terminal --hide-menubar -t "SpiderFoot" -- cfl-run spiderfoot
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

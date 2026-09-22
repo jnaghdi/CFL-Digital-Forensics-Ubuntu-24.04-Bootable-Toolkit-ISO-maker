@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hashcat
+Comment=GPU hash cracking
+Exec=mate-terminal --hide-menubar -t "hashcat" -- cfl-run hashcat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

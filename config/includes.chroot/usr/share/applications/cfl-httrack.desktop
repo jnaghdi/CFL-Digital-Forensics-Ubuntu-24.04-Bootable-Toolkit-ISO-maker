@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=HTTrack
+Comment=Mirror a website for offline analysis
+Exec=webhttrack
+Icon=applications-utilities
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

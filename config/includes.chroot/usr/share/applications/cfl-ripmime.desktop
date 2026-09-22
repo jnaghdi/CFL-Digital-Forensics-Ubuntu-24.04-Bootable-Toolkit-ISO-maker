@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ripmime
+Comment=MIME email extraction
+Exec=mate-terminal --hide-menubar -t "ripmime" -- cfl-run ripmime
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

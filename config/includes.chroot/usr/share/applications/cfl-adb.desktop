@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=adb
+Comment=Android Debug Bridge
+Exec=mate-terminal --hide-menubar -t "adb" -- cfl-run adb
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;mobile;

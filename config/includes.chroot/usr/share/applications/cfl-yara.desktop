@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=yara
+Comment=Pattern matching for malware
+Exec=mate-terminal --hide-menubar -t "yara" -- cfl-run yara
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

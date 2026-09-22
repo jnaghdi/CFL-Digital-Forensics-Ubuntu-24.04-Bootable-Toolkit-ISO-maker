@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=torsocks
+Comment=Run a command through the Tor network
+Exec=mate-terminal --hide-menubar -t "torsocks" -- cfl-run torsocks
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;tor;anonymity;proxy;

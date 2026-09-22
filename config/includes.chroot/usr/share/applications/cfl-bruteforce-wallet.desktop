@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bruteforce-wallet
+Comment=Crypto wallet recovery
+Exec=mate-terminal --hide-menubar -t "bruteforce-wallet" -- cfl-run bruteforce-wallet
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

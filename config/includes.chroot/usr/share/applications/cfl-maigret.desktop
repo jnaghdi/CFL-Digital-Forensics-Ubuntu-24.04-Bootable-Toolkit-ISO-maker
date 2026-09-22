@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Maigret
+Comment=Collect a dossier on a username across sites
+Exec=mate-terminal --hide-menubar -t "maigret" -- cfl-run maigret
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;username;profile;

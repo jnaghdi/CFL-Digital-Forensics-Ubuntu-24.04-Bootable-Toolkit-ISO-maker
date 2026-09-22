@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=testssl.sh
+Comment=TLS configuration tester
+Exec=mate-terminal --hide-menubar -t "testssl.sh" -- cfl-run testssl.sh
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

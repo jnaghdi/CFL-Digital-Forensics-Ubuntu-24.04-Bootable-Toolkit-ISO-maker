@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ghidra
+Comment=Software reverse engineering suite
+Exec=/opt/ghidra/ghidraRun
+Icon=/opt/ghidra/support/ghidra_64.png
+Terminal=false
+Categories=X-CFL-MalwareRE;
+StartupWMClass=Ghidra

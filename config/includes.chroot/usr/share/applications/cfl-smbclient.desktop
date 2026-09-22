@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=smbclient
+Comment=SMB/CIFS client - browse and pull shares
+Exec=mate-terminal --hide-menubar -t "smbclient" -- cfl-run smbclient
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;smb;cifs;share;

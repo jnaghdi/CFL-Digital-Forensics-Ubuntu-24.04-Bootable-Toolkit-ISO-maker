@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=exiv2
+Comment=Image metadata
+Exec=mate-terminal --hide-menubar -t "exiv2" -- cfl-run exiv2
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

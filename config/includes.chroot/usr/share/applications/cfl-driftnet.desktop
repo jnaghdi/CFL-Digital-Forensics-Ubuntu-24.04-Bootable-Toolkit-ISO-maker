@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=driftnet
+Comment=Image sniffing from traffic
+Exec=mate-terminal --hide-menubar -t "driftnet" -- cfl-run driftnet
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

@@ -1,0 +1,43 @@
+# Static validation on every push and pull request. This is exactly
+# scripts/test-release.sh - shell syntax, shellcheck, undefined-function
+# calls, GRUB menu syntax, Calamares YAML, desktop entries, package-list
+# hygiene and launcher/menu regressions. It needs no root and no network
+# beyond installing the checkers. A full ISO build is NOT run here (it needs
+# root, ~30 GB and a long time) - see CONTRIBUTING.md for the release process.
+name: static-checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install checkers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            shellcheck grub-common desktop-file-utils python3-yaml dconf-cli
+
+      - name: Static test suite
+        run: ./scripts/test-release.sh
+
+      - name: dconf keyfile compiles
+        run: |
+          mkdir -p /tmp/dc/local.d
+          cp config/includes.chroot/etc/dconf/db/local.d/01-cfl-forensics /tmp/dc/local.d/
+          dconf compile /tmp/dc/local /tmp/dc/local.d
+
+  verify-packages:
+    # Confirms every package name still exists in the Ubuntu archive
+    # (names move between releases). Needs network to the Ubuntu mirrors.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify package lists against the live archive
+        run: ./scripts/verify-packages.sh

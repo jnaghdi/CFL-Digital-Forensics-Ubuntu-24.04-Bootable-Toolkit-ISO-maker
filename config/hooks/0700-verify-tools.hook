@@ -1,0 +1,108 @@
+#!/bin/bash
+# 0700-verify-tools.hook
+# Build-time health gate for every CFL menu launcher:
+#   1. the Exec binary must resolve in the chroot (else the launcher is pruned)
+#   2. wrappers into /opt/tools must point at files that exist
+#   3. --help smoke test must not die with missing-module / loader errors
+# Results land in /usr/share/cfl-forensics/TOOL-HEALTH.txt (shipped in the
+# image), pruned launchers are listed in pruned-launchers.txt.
+set -u
+APPS=/usr/share/applications
+OUT=/usr/share/cfl-forensics
+REPORT="$OUT/TOOL-HEALTH.txt"
+PRUNED="$OUT/pruned-launchers.txt"
+TMP=$(mktemp -d)
+mkdir -p "$OUT"
+
+# tools that are interactive (curses/shell/GUI-ish) or expect stdin - 
+# existence check only, no --help probe
+cat > "$TMP/skip-smoke" <<'EOF'
+photorec testdisk nwipe sdmem sfill sswap shred srm dc3dd dcfldd
+guestfish hivexsh volshell blkcat blkls foremost scalpel guymager
+xmount bdemount fvdemount fsapfsmount fsntfsmount vshadowmount phdimount
+ewfacquire ideviceimagemounter freshclam
+EOF
+
+worker() {
+    local f="$1" TMP="$2"
+    local name exec_line bin cmd target out rc
+    name=$(basename "$f")
+    exec_line=$(grep -m1 '^Exec=' "$f" | cut -d= -f2-)
+    # Peel back the launcher wrappers to find the *real* tool binary. CLI
+    # launchers look like:
+    #     mate-terminal --hide-menubar -t "tool" -- cfl-run tool [args]
+    # (older builds used "-x" in place of "--"; both are handled). GUI-root
+    # launchers look like:
+    #     cfl-run-gui tool   |   pkexec [env VAR=..] tool
+    # so: if the line runs a terminal, drop everything up to and including the
+    # "--" (or "-x") separator, then strip any cfl-run / cfl-run-gui / pkexec /
+    # env wrappers to reach the binary.
+    case "$exec_line" in
+        mate-terminal*|gnome-terminal*|xterm*|x-terminal-emulator*)
+            case "$exec_line" in
+                *" -- "*) exec_line=${exec_line#* -- } ;;
+                *" -x "*) exec_line=${exec_line#* -x } ;;
+                *" -e "*) exec_line=${exec_line#* -e } ;;
+            esac
+            ;;
+    esac
+    set -- $exec_line
+    while :; do
+        case "${1:-}" in
+            cfl-run|cfl-run-gui|pkexec|sudo|env) shift ;;
+            *=*) shift ;;                 # leading VAR=value assignments (env ...)
+            *) break ;;
+        esac
+    done
+    bin="${1:-}"
+    [ -z "$bin" ] && { echo "SKIP      no-binary      $name" > "$TMP/$name.res"; return; }
+    cmd=$(command -v "$bin" 2>/dev/null || true)
+    if [ -z "$cmd" ]; then
+        echo "PRUNE     missing-binary $name  ($bin not found)" > "$TMP/$name.res"
+        return
+    fi
+    # if it is a wrapper script, its target must exist
+    if head -c2 "$cmd" 2>/dev/null | grep -q '^#!'; then
+        target=$(grep -oE '/opt/tools/[^" ]+' "$cmd" 2>/dev/null | head -1 || true)
+        if [ -n "$target" ] && [ ! -e "$target" ]; then
+            echo "PRUNE     broken-wrapper $name  ($target missing)" > "$TMP/$name.res"
+            return
+        fi
+    fi
+    if grep -qw "$bin" "$TMP/skip-smoke"; then
+        echo "OK-skip   present        $name  ($bin)" > "$TMP/$name.res"
+        return
+    fi
+    out=$(timeout 12 "$bin" --help </dev/null 2>&1); rc=$?
+    if [ "$rc" -ge 126 ]; then
+        echo "PRUNE     not-runnable   $name  ($bin rc=$rc)" > "$TMP/$name.res"
+    elif echo "$out" | grep -qE 'ModuleNotFoundError|ImportError|No module named|bad interpreter|error while loading shared librar'; then
+        echo "$out" | head -3 | sed 's/^/          /' > "$TMP/$name.detail"
+        echo "PRUNE     missing-deps   $name  ($bin)" > "$TMP/$name.res"
+    else
+        echo "OK        rc=$rc         $name  ($bin)" > "$TMP/$name.res"
+    fi
+}
+export -f worker
+
+find "$APPS" -maxdepth 1 -name 'cfl-*.desktop' -print0 \
+  | xargs -0 -P 4 -I{} bash -c 'worker "$@"' _ {} "$TMP"
+
+# merge
+{
+    echo "CFL Forensics - build-time tool health ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+    echo "=================================================================="
+    sort "$TMP"/*.res
+} > "$REPORT"
+
+pruned=$(grep -c '^PRUNE' "$REPORT" || true)
+total=$(find "$TMP" -name '*.res' | wc -l)
+grep '^PRUNE' "$REPORT" | awk '{print $3}' > "$PRUNED"
+while read -r n; do rm -f "$APPS/$n"; done < "$PRUNED"
+{
+    echo
+    echo "checked: $total    pruned: $pruned (see $PRUNED)"
+} >> "$REPORT"
+tail -3 "$REPORT"
+rm -rf "$TMP"
+exit 0

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=phdimount
+Comment=Mount Parallels images
+Exec=mate-terminal --hide-menubar -t "phdimount" -- cfl-run phdimount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

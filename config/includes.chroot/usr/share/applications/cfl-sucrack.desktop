@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sucrack
+Comment=su brute force
+Exec=mate-terminal --hide-menubar -t "sucrack" -- cfl-run sucrack
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

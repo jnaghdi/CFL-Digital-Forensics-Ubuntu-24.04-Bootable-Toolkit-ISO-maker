@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=icat
+Comment=Extract file content by inode (TSK)
+Exec=mate-terminal --hide-menubar -t "icat" -- cfl-run icat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

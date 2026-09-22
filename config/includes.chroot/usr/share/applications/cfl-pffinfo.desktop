@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pffinfo
+Comment=PST/OST information
+Exec=mate-terminal --hide-menubar -t "pffinfo" -- cfl-run pffinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

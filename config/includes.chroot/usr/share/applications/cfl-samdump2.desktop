@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=samdump2
+Comment=Dump SAM hashes
+Exec=mate-terminal --hide-menubar -t "samdump2" -- cfl-run samdump2
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Guymager (forensic imager)
+Comment=Acquire a forensic image of a disk or volume (runs as root)
+Exec=cfl-run-gui guymager
+Icon=cfl-logo
+Terminal=false
+Categories=System;X-CFL-Acquisition;
+Keywords=image;acquire;dd;ewf;e01;clone;

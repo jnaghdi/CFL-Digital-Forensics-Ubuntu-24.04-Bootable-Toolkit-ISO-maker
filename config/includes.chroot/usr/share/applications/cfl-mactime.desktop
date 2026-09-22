@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mactime
+Comment=Timeline from MAC data (TSK)
+Exec=mate-terminal --hide-menubar -t "mactime" -- cfl-run mactime
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pipal
+Comment=Password pattern analyser
+Exec=mate-terminal --hide-menubar -t "pipal" -- cfl-run pipal
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

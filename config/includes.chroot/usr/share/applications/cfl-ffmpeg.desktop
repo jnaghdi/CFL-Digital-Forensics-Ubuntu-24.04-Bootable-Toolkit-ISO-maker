@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ffmpeg
+Comment=Media conversion and analysis
+Exec=mate-terminal --hide-menubar -t "ffmpeg" -- cfl-run ffmpeg
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

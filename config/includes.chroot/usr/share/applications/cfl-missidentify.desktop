@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=missidentify
+Comment=File type identification
+Exec=mate-terminal --hide-menubar -t "missidentify" -- cfl-run missidentify
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

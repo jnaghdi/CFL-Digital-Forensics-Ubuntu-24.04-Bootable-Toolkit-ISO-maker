@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sslscan
+Comment=SSL/TLS configuration scanner
+Exec=mate-terminal --hide-menubar -t "sslscan" -- cfl-run sslscan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

@@ -1,0 +1,88 @@
+#!/bin/bash
+# cfl-run - open a CLI forensic tool in a terminal window, reliably.
+#
+# What the examiner sees when they click a tool in the CFL menu:
+#   1. the tool's usage / help text, so they know the syntax, then
+#   2. a live shell prompt in the SAME window, ready for the real command
+#      (e.g.  tshark -i eth0 -w capture.pcap).
+#
+# Why it is done this way - the two ways a terminal launcher "hangs":
+#   * Most forensic CLI tools print usage and exit immediately when run with
+#     no arguments. A terminal configured to "hold" then shows the "child
+#     process exited ... Relaunch" bar, which looks like a hang.
+#   * Tools that read standard input (strings, xxd, md5sum, base64, ...) sit
+#     waiting for input forever when run bare - a real hang.
+# So the usage probe below runs with stdin closed and a hard timeout - it can
+# never block - and the window is kept open by an interactive shell, not by a
+# terminal "hold" setting. Closing the shell (exit / Ctrl-D) closes the window.
+#
+# If arguments are supplied (cfl-run tool arg...) the tool is simply run for
+# real with the full terminal, then the shell follows.
+#
+# usage: cfl-run <command> [arguments...]
+
+cmd="$1"
+[ $# -gt 0 ] && shift
+
+bold=$'\e[1m'; dim=$'\e[2m'; grn=$'\e[32m'; yel=$'\e[33m'; red=$'\e[31m'; rst=$'\e[0m'
+
+shell_prompt() {
+    cd /cases 2>/dev/null || cd "$HOME" 2>/dev/null || cd /
+    exec "${SHELL:-/bin/bash}" -i
+}
+
+if [ -z "$cmd" ]; then
+    echo "usage: cfl-run <command> [arguments...]" >&2
+    shell_prompt
+fi
+
+if ! command -v "$cmd" >/dev/null 2>&1; then
+    printf '%s\n' \
+      "${red}${bold}[CFL] '$cmd' is not installed on this system.${rst}" \
+      "" \
+      "  Its package most likely failed to install when the image was built." \
+      "  See /usr/share/cfl-forensics/TOOL-HEALTH.txt, or install it now:" \
+      "      sudo apt update && sudo apt install <package>" \
+      ""
+    shell_prompt
+fi
+
+# --- explicit arguments: run the tool for real, then fall through to a shell ---
+if [ $# -gt 0 ]; then
+    "$cmd" "$@"
+    status=$?
+    printf '\n%s[CFL] %s finished (exit %s). Shell below - type exit to close.%s\n\n' "$dim" "$cmd" "$status" "$rst"
+    shell_prompt
+fi
+
+# --- no arguments: show usage safely, then a shell ---------------------------
+printf '%s%s[CFL] %s%s   %s%s%s\n\n' "$bold" "$grn" "$cmd" "$rst" "$dim" "$(command -v "$cmd")" "$rst"
+
+# Try the common help flags. stdin is closed and a timeout applied, so a tool
+# that would read stdin or open a TUI cannot block here.
+usage=""
+for flag in --help -h -help; do
+    usage=$(timeout 8 "$cmd" "$flag" </dev/null 2>&1)
+    # accept the first attempt that produced something that looks like help
+    if [ -n "$usage" ] && printf '%s' "$usage" | grep -qiE 'usage|option|synopsis|help|--|-h\b'; then
+        break
+    fi
+    usage=""
+done
+if [ -z "$usage" ]; then
+    # last resort: run bare, still with stdin closed + timeout
+    usage=$(timeout 8 "$cmd" </dev/null 2>&1)
+fi
+
+if [ -n "$usage" ]; then
+    printf '%s' "$usage" | head -n 80
+    lines=$(printf '%s\n' "$usage" | wc -l)
+    [ "$lines" -gt 80 ] && printf '%s... (%s more lines - run  %s --help | less  to read everything)%s\n' "$dim" "$((lines-80))" "$cmd" "$rst"
+    echo
+else
+    printf '%s(no usage text from %s - see  man %s)%s\n\n' "$dim" "$cmd" "$cmd" "$rst"
+fi
+
+printf '%s%sReady.%s  Type your command, e.g.  %s%s <options>%s - %sexit%s closes this window.\n\n' \
+    "$bold" "$yel" "$rst" "$bold" "$cmd" "$rst" "$bold" "$rst"
+shell_prompt

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=upx
+Comment=Executable packer/unpacker
+Exec=mate-terminal --hide-menubar -t "upx" -- cfl-run upx
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

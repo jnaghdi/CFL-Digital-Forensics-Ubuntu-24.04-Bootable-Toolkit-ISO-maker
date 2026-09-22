@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=scrcpy
+Comment=Mirror and record an Android device screen
+Exec=mate-terminal --hide-menubar -t "scrcpy" -- cfl-run scrcpy
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;android;screen;record;

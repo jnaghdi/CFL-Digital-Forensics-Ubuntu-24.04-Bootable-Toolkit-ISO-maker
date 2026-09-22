@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Andriller
+Comment=Android forensic extraction and decoding (GUI)
+Exec=andriller-gui
+Icon=cfl-logo
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;android;extraction;

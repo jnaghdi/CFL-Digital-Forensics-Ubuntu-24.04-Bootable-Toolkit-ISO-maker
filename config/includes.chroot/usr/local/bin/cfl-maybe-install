@@ -1,0 +1,9 @@
+#!/bin/sh
+# Auto-start the Calamares installer when the boot menu's
+# "Install CFL Forensics" entry was chosen (kernel arg: cfl-install).
+grep -qw "cfl-install" /proc/cmdline || exit 0
+# Live session only - never on an installed system
+[ -d /cdrom/casper ] || [ -d /run/live/medium ] || exit 0
+# Give the desktop a moment to settle
+sleep 6
+exec pkexec calamares

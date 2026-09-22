@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=unhide
+Comment=Hidden process detection
+Exec=mate-terminal --hide-menubar -t "unhide" -- cfl-run unhide
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

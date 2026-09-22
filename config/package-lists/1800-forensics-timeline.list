@@ -1,0 +1,11 @@
+# Timelines, registry & artifact analysis
+plaso forensic-artifacts grokevt python3-evtx
+regripper reglookup winregfs libhivex-bin
+python3-hivex time-decode mac-robber lnav
+galleta pasco rifiuti rifiuti2
+vinetto undbx pff-tools pst-utils
+ripmime mboxgrep mblaze usbrip
+sqlite3 sqlitebrowser
+
+# Windows registry library (Kali parity)
+python3-dfwinreg

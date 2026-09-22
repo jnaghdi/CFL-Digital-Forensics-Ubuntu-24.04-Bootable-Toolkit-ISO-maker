@@ -1,0 +1,4 @@
+#!no-recommends
+# Hardware support: Ubuntu ships all device firmware in one package
+linux-firmware
+intel-microcode amd64-microcode

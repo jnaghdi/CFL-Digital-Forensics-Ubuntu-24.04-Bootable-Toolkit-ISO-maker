@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ALEAPP
+Comment=Android logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "ALEAPP" -- cfl-run aleapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

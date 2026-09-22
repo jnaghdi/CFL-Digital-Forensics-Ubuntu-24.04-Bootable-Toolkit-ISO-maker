@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=DumpsterDiver
+Comment=Find secrets and credentials in file trees
+Exec=mate-terminal --hide-menubar -t "DumpsterDiver" -- cfl-run dumpsterdiver
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;

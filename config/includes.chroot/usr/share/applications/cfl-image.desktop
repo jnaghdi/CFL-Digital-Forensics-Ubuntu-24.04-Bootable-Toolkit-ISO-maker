@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CFL Imaging Wizard
+Comment=PALADIN-style guided imaging: dc3dd / ewfacquire + hash + verify + log
+Exec=mate-terminal --hide-menubar -t "CFL Imaging Wizard" -- cfl-run cfl-image
+Icon=drive-harddisk
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;imaging;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=wifite
+Comment=Automated Wi-Fi auditing
+Exec=mate-terminal --hide-menubar -t "wifite" -- cfl-run wifite
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

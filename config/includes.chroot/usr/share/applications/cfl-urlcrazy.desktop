@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=URLCrazy
+Comment=Generate and test typosquatting domain variants
+Exec=mate-terminal --hide-menubar -t "URLCrazy" -- cfl-run urlcrazy
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

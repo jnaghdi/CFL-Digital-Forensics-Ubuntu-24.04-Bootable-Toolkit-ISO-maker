@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sdmem
+Comment=Secure RAM wipe
+Exec=mate-terminal --hide-menubar -t "sdmem" -- cfl-run sdmem
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

@@ -1,0 +1,11 @@
+# Incident response & sandboxing
+inetsim firejail qemu-system-x86 chkrootkit
+rkhunter unhide acct aide
+tripwire suricata
+
+# Malware triage GUI, integrity monitoring & hashing (CSI parity)
+clamtk inotify-tools hashdeep
+
+# Windows credential/registry dumping (replaces pwdump/cachedump/lsadump - 
+# not packaged for trixie; impacket's secretsdump covers them)
+python3-impacket

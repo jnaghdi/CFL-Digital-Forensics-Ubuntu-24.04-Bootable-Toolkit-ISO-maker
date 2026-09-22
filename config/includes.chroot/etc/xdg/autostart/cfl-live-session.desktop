@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CFL Forensics live session
+Comment=Per-session setup for the CFL Forensics live examiner
+Exec=/usr/local/bin/cfl-live-session
+OnlyShowIn=GNOME;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

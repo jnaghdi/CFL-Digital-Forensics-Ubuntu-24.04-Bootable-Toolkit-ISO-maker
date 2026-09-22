@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sngrep
+Comment=SIP call analyser
+Exec=mate-terminal --hide-menubar -t "sngrep" -- cfl-run sngrep
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

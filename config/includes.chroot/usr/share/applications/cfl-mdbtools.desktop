@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MDB Tools
+Comment=Read Microsoft Access databases (mdb-tables)
+Exec=mate-terminal --hide-menubar -t "MDB Tools" -- cfl-run mdb-tables
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;

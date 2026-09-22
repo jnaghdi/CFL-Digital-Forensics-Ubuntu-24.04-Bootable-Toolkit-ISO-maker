@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=snowdrop
+Comment=Text steganography
+Exec=mate-terminal --hide-menubar -t "snowdrop" -- cfl-run snowdrop
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

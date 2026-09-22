@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dmitry
+Comment=Deepmagic information gathering
+Exec=mate-terminal --hide-menubar -t "dmitry" -- cfl-run dmitry
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=smartctl
+Comment=S.M.A.R.T. disk health
+Exec=mate-terminal --hide-menubar -t "smartctl" -- cfl-run smartctl
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

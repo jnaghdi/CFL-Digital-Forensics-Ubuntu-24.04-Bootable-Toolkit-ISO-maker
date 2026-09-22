@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Shodan CLI
+Comment=Query the Shodan search engine
+Exec=mate-terminal --hide-menubar -t "Shodan CLI" -- cfl-run shodan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

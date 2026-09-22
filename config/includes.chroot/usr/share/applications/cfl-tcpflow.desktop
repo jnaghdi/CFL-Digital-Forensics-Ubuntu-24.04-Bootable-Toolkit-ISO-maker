@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tcpflow
+Comment=TCP stream reassembly
+Exec=mate-terminal --hide-menubar -t "tcpflow" -- cfl-run tcpflow
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

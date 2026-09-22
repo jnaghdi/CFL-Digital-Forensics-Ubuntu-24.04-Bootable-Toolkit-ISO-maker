@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=whatweb
+Comment=Website fingerprinting
+Exec=mate-terminal --hide-menubar -t "whatweb" -- cfl-run whatweb
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MAC Changer
+Comment=Spoof the MAC address of a network interface
+Exec=mate-terminal --hide-menubar -t "MAC Changer" -- cfl-run macchanger
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

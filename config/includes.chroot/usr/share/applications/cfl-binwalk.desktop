@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=binwalk
+Comment=Firmware analysis and extraction
+Exec=mate-terminal --hide-menubar -t "binwalk" -- cfl-run binwalk
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

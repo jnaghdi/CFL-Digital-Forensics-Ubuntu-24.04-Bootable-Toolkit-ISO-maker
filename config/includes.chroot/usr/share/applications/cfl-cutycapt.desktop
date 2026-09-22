@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CutyCapt
+Comment=Headless web-page capture for evidence
+Exec=mate-terminal --hide-menubar -t "CutyCapt" -- cfl-run cutycapt
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

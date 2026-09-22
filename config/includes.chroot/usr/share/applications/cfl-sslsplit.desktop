@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sslsplit
+Comment=Transparent TLS/SSL interception for lab analysis
+Exec=mate-terminal --hide-menubar -t "sslsplit" -- cfl-run sslsplit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;tls;ssl;mitm;

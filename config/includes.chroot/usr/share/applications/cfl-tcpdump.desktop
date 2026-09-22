@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tcpdump
+Comment=Packet capture
+Exec=mate-terminal --hide-menubar -t "tcpdump" -- cfl-run tcpdump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

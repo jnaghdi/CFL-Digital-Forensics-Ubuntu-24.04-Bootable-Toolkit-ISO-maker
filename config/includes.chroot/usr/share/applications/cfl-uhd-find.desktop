@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=UHD Find Devices
+Comment=Discover connected USRP hardware
+Exec=mate-terminal --hide-menubar -t "UHD Find Devices" -- cfl-run uhd_find_devices
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

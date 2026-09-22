@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=wipe
+Comment=Secure file deletion
+Exec=mate-terminal --hide-menubar -t "wipe" -- cfl-run wipe
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

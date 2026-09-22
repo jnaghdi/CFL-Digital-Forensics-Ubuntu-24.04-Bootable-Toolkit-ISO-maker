@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=inetsim
+Comment=Internet service simulation
+Exec=mate-terminal --hide-menubar -t "inetsim" -- cfl-run inetsim
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

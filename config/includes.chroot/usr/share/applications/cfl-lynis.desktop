@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=lynis
+Comment=Security auditing
+Exec=mate-terminal --hide-menubar -t "lynis" -- cfl-run lynis
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

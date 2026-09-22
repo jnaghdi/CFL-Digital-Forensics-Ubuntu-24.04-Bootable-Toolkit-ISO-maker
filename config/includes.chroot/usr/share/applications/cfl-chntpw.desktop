@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=chntpw
+Comment=Windows SAM password reset
+Exec=mate-terminal --hide-menubar -t "chntpw" -- cfl-run chntpw
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

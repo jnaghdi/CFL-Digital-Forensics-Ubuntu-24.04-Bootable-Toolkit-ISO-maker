@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=HackRF Info
+Comment=Query a connected HackRF device
+Exec=mate-terminal --hide-menubar -t "HackRF Info" -- cfl-run hackrf_info
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

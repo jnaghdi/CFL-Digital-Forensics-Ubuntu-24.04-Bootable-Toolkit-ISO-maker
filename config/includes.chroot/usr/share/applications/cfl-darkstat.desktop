@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=darkstat
+Comment=Network traffic grapher with web interface
+Exec=mate-terminal --hide-menubar -t "darkstat" -- cfl-run darkstat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;

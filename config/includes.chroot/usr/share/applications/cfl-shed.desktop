@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=shed
+Comment=Simple hex editor
+Exec=mate-terminal --hide-menubar -t "shed" -- cfl-run shed
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

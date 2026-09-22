@@ -1,0 +1,22 @@
+#!/bin/bash
+# cfl-run-gui - launch a GUI forensic tool as root while keeping access to the
+# examiner's display. Used by menu launchers for tools that must run as root
+# (e.g. imagers, disk editors). In the live session polkit allows this without
+# a password; on an installed system the user is prompted once.
+#
+# usage: cfl-run-gui <command> [arguments...]
+cmd="$1"
+if [ -z "$cmd" ]; then
+    echo "usage: cfl-run-gui <command> [args...]" >&2
+    exit 2
+fi
+if ! command -v "$cmd" >/dev/null 2>&1; then
+    exec cfl-run "$@"     # reuse cfl-run's friendly "not installed" message
+fi
+# Already root? just run it.
+if [ "$(id -u)" -eq 0 ]; then
+    exec "$@"
+fi
+exec pkexec env DISPLAY="$DISPLAY" XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}" \
+    WAYLAND_DISPLAY="$WAYLAND_DISPLAY" XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+    "$@"

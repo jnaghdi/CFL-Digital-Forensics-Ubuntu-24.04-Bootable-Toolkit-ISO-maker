@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=amass
+Comment=Attack surface mapping
+Exec=mate-terminal --hide-menubar -t "amass" -- cfl-run amass
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

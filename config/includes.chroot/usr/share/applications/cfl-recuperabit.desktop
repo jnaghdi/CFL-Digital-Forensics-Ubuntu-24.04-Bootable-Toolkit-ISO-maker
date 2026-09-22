@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RecuperaBit
+Comment=Reconstruct heavily damaged NTFS file systems
+Exec=mate-terminal --hide-menubar -t "RecuperaBit" -- cfl-run recuperabit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;

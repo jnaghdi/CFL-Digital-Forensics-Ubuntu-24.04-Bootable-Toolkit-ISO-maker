@@ -1,0 +1,5 @@
+# CFL Forensics: keep snapd off the system (forensic workstations should not
+# auto-refresh packaged apps; all tooling here is .deb / pipx / upstream).
+Package: snapd
+Pin: release *
+Pin-Priority: -10

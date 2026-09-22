@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bruteforce-salted-openssl
+Comment=OpenSSL salted file recovery
+Exec=mate-terminal --hide-menubar -t "bruteforce-salted-openssl" -- cfl-run bruteforce-salted-openssl
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

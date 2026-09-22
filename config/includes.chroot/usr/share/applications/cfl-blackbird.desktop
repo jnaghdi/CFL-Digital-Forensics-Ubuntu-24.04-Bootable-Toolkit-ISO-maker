@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Blackbird
+Comment=Username search across hundreds of sites
+Exec=mate-terminal --hide-menubar -t "Blackbird" -- cfl-run blackbird
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

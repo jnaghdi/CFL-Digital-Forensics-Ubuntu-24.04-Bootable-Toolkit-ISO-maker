@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ssldump
+Comment=SSL/TLS protocol analyser
+Exec=mate-terminal --hide-menubar -t "ssldump" -- cfl-run ssldump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

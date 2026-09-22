@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dc3dd
+Comment=Enhanced dd with hashing and verification
+Exec=mate-terminal --hide-menubar -t "dc3dd" -- cfl-run dc3dd
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

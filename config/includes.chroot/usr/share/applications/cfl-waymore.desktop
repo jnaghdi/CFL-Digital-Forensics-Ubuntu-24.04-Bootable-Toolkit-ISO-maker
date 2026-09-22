@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=waymore
+Comment=Wayback Machine data
+Exec=mate-terminal --hide-menubar -t "waymore" -- cfl-run waymore
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

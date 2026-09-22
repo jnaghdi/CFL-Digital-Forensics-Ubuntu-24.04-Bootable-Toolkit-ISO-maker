@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hydra
+Comment=Online password attacks
+Exec=mate-terminal --hide-menubar -t "hydra" -- cfl-run hydra
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

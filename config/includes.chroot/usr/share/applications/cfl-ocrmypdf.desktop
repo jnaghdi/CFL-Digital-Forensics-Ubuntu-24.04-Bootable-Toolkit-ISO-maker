@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OCRmyPDF
+Comment=Add an OCR text layer to scanned PDFs
+Exec=mate-terminal --hide-menubar -t "OCRmyPDF" -- cfl-run ocrmypdf
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CFL 4K Menu Scaling
+Comment=Scale the CFL menu 25 percent larger on 4K displays (runs once per user)
+Exec=/usr/local/bin/cfl-menu-scale
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=3

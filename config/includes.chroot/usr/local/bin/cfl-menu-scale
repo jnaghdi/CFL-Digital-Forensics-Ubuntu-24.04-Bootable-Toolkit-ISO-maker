@@ -1,0 +1,59 @@
+#!/bin/bash
+# cfl-menu-scale - scale the CFL menu (ArcMenu) 25% larger by default on
+# 4K (or higher) displays. Runs once per user at login (autostart); remove
+# the stamp file to re-evaluate, e.g. after moving to a different monitor.
+#
+# Base -> +25%:
+#   menu-font-size        11 -> 14
+#   menu-height          550 -> 688
+#   left-panel-width     290 -> 363
+#   right-panel-width    205 -> 256
+#   item/category/grid icons  Default -> Large
+#   button icon size      20 -> 25
+
+set -u
+
+STAMP_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/cfl-forensics"
+STAMP="$STAMP_DIR/menu-scale-4k-v1"
+[ -f "$STAMP" ] && exit 0
+mkdir -p "$STAMP_DIR"
+
+is_4k=0
+if command -v xrandr >/dev/null 2>&1; then
+    # a connected output currently driven at >=3840px wide (mode has '+')
+    if xrandr 2>/dev/null | grep ' connected' | grep -Eq '\b(3840|[4-9][0-9]{3})x[0-9]+\+'; then
+        is_4k=1
+    fi
+fi
+# Wayland fallback (GNOME on Wayland hides real modes from xrandr)
+if [ "$is_4k" = 0 ] && [ "${XDG_SESSION_TYPE:-}" = "wayland" ]; then
+    if command -v gnome-shell >/dev/null 2>&1; then
+        if gdbus call --session \
+            --dest org.gnome.Mutter.DisplayConfig \
+            --object-path /org/gnome/Mutter/DisplayConfig \
+            --method org.gnome.Mutter.DisplayConfig.GetCurrentState 2>/dev/null \
+            | grep -Eq '\(3840,|[4-9][0-9]{3},'; then
+            is_4k=1
+        fi
+    fi
+fi
+
+if [ "$is_4k" = 1 ]; then
+    S='org.gnome.shell.extensions.arcmenu'
+    gsettings set "$S" menu-font-size 14
+    gsettings set "$S" menu-height 688
+    gsettings set "$S" left-panel-width 363
+    gsettings set "$S" right-panel-width 256
+    gsettings set "$S" menu-item-icon-size 'Large'
+    gsettings set "$S" menu-item-category-icon-size 'Large'
+    gsettings set "$S" menu-item-grid-icon-size 'Large'
+    gsettings set "$S" button-item-icon-size 'Large'
+    gsettings set "$S" misc-item-icon-size 'Large'
+    gsettings set "$S" custom-menu-button-icon-size 25.0
+    echo "cfl-menu-scale: 4K display detected - CFL menu scaled +25%." >&2
+else
+    echo "cfl-menu-scale: no 4K display - menu left at default scale." >&2
+fi
+
+touch "$STAMP"
+exit 0

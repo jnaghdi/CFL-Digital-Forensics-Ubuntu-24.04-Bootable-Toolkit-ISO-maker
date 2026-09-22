@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rfdump
+Comment=Read and analyse RFID tags
+Exec=mate-terminal --hide-menubar -t "rfdump" -- cfl-run rfdump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

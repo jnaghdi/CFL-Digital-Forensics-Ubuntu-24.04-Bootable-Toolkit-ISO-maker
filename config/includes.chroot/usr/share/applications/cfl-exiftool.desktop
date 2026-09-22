@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=exiftool
+Comment=Metadata reader/writer
+Exec=mate-terminal --hide-menubar -t "exiftool" -- cfl-run exiftool
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

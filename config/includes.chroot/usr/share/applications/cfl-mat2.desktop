@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mat2
+Comment=Metadata anonymisation
+Exec=mate-terminal --hide-menubar -t "mat2" -- cfl-run mat2
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

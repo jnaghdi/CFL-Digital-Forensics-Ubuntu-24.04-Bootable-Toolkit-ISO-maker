@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dwarfdump
+Comment=DWARF debug information
+Exec=mate-terminal --hide-menubar -t "dwarfdump" -- cfl-run dwarfdump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

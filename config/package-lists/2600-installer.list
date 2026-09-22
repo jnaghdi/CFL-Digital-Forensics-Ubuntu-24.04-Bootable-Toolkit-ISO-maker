@@ -1,0 +1,5 @@
+# Graphical installer (Calamares) + partitioning helpers for dual-boot installs
+calamares
+gparted parted gdisk python3-parted
+# Case-management GUI stack & desktop utilities (CSI parity)
+zenity wmctrl xterm pandoc

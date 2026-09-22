@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=WLEAPP
+Comment=Windows logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "WLEAPP" -- cfl-run wleapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

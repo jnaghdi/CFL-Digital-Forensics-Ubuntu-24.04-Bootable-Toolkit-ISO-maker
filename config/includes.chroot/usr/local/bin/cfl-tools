@@ -1,0 +1,8 @@
+#!/bin/bash
+# Browse or search the CFL Forensics tool inventory.
+CATALOG=/usr/share/cfl-forensics/TOOL-CATALOGUE.md
+if [ $# -ge 1 ]; then
+    grep -in --color=always "$1" "$CATALOG" | less -R
+else
+    less "$CATALOG"
+fi

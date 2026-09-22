@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=chkrootkit
+Comment=Rootkit detection
+Exec=mate-terminal --hide-menubar -t "chkrootkit" -- cfl-run chkrootkit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

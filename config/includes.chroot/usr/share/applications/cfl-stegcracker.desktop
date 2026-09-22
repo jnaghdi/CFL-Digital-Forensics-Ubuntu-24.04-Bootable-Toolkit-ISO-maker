@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=stegcracker
+Comment=Steghide brute force
+Exec=mate-terminal --hide-menubar -t "stegcracker" -- cfl-run stegcracker
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

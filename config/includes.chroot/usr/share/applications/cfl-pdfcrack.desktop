@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pdfcrack
+Comment=PDF password cracker
+Exec=mate-terminal --hide-menubar -t "pdfcrack" -- cfl-run pdfcrack
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

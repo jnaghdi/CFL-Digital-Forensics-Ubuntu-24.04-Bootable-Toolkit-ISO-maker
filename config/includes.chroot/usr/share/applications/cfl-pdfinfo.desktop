@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pdfinfo
+Comment=PDF information
+Exec=mate-terminal --hide-menubar -t "pdfinfo" -- cfl-run pdfinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

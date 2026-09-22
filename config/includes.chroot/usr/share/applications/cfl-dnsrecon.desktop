@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dnsrecon
+Comment=DNS reconnaissance
+Exec=mate-terminal --hide-menubar -t "dnsrecon" -- cfl-run dnsrecon
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

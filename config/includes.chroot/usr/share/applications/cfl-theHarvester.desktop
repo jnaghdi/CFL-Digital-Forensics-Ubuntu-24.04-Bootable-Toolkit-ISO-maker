@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=theHarvester
+Comment=Email and host OSINT
+Exec=mate-terminal --hide-menubar -t "theHarvester" -- cfl-run theHarvester
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

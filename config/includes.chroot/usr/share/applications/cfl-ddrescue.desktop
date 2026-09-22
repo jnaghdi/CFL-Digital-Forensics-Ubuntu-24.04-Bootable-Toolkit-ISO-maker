@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ddrescue
+Comment=Data recovery from damaged media
+Exec=mate-terminal --hide-menubar -t "ddrescue" -- cfl-run ddrescue
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

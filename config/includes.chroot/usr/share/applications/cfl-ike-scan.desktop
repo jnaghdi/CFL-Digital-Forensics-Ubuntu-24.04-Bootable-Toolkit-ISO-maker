@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ike-scan
+Comment=IPsec VPN discovery
+Exec=mate-terminal --hide-menubar -t "ike-scan" -- cfl-run ike-scan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rip.pl (RegRipper)
+Comment=Registry hive analysis
+Exec=mate-terminal --hide-menubar -t "rip.pl (RegRipper)" -- cfl-run rip.pl
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

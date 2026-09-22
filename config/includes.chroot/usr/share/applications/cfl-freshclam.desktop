@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=freshclam
+Comment=Update ClamAV signatures
+Exec=mate-terminal --hide-menubar -t "freshclam" -- cfl-run freshclam
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

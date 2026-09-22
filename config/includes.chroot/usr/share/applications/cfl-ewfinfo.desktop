@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ewfinfo
+Comment=Show metadata stored in an EWF (E01) image
+Exec=mate-terminal --hide-menubar -t "ewfinfo" -- cfl-run ewfinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;imaging;

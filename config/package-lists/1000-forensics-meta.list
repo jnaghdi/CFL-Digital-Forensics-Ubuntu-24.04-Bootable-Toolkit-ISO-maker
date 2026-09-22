@@ -1,0 +1,5 @@
+# Debian "forensics-all" metapackage (Ubuntu ships it in universe) - pulls in a
+# large tranche of the Debian Forensics Environment tool set. forensics-extra
+# from the Debian template does not exist in the Ubuntu archive and is dropped;
+# the individual tools it would have pulled are covered by the category lists.
+forensics-all

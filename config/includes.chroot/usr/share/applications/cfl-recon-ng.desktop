@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=recon-ng
+Comment=Reconnaissance framework
+Exec=mate-terminal --hide-menubar -t "recon-ng" -- cfl-run recon-ng
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

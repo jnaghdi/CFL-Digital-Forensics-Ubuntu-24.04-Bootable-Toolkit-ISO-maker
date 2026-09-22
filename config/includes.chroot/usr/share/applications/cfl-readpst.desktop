@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=readpst
+Comment=PST to mbox conversion
+Exec=mate-terminal --hide-menubar -t "readpst" -- cfl-run readpst
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

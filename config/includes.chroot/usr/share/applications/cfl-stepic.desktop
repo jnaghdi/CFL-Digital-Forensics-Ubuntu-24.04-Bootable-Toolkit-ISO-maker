@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=stepic
+Comment=Image steganography
+Exec=mate-terminal --hide-menubar -t "stepic" -- cfl-run stepic
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

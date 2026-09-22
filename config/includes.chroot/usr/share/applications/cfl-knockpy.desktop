@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Knockpy
+Comment=Subdomain brute-forcing with wordlists
+Exec=mate-terminal --hide-menubar -t "Knockpy" -- cfl-run knockpy
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

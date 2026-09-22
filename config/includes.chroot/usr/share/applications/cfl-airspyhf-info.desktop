@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Airspy HF+ Info
+Comment=Query a connected Airspy HF+ device
+Exec=mate-terminal --hide-menubar -t "Airspy HF+ Info" -- cfl-run airspyhf_info
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

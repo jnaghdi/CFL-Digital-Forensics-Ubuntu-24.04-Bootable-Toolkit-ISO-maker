@@ -1,0 +1,14 @@
+# File-system analysis & container/encryption formats
+libfsapfs-utils libfvde-utils libbde-utils libfsntfs-utils
+sleuthkit
+libvshadow-utils libvslvm-utils  libqcow-utils
+libvmdk-utils libsmraw-utils hfsprogs hfsplus
+dmg2img exfatprogs xfsprogs btrfs-progs
+jfsutils f2fs-tools udftools dosfstools
+mtools nilfs-tools dislocker erofs-utils
+squashfs-tools squashfs-tools-ng disktype gdisk
+parted gparted ntfs-3g fuse3
+sshfs
+
+# Extra file-system coverage (CSI parity)
+apfsprogs gfs2-utils ocfs2-tools reiserfsprogs

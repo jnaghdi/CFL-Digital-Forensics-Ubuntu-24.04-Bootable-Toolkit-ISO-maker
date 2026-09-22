@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hping3
+Comment=Packet crafting
+Exec=mate-terminal --hide-menubar -t "hping3" -- cfl-run hping3
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

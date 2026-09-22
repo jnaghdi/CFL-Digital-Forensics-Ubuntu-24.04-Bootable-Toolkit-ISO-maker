@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=aircrack-ng
+Comment=Wi-Fi key cracking
+Exec=mate-terminal --hide-menubar -t "aircrack-ng" -- cfl-run aircrack-ng
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

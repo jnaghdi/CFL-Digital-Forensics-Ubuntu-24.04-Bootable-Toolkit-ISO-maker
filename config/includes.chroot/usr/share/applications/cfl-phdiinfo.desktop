@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=phdiinfo
+Comment=Parallels HDD information
+Exec=mate-terminal --hide-menubar -t "phdiinfo" -- cfl-run phdiinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

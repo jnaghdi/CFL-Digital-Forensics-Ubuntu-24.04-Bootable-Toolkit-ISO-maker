@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=smbmap
+Comment=Enumerate SMB shares and permissions
+Exec=mate-terminal --hide-menubar -t "smbmap" -- cfl-run smbmap
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;smb;share;enum;

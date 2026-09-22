@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fierce
+Comment=DNS scanner
+Exec=mate-terminal --hide-menubar -t "fierce" -- cfl-run fierce
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

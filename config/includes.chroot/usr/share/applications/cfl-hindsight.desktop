@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hindsight
+Comment=Web browser history and artefact forensics (Chrome/Edge/Brave)
+Exec=mate-terminal --hide-menubar -t "hindsight" -- cfl-run hindsight
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;browser;history;chrome;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=altdns
+Comment=Subdomain permutation
+Exec=mate-terminal --hide-menubar -t "altdns" -- cfl-run altdns
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

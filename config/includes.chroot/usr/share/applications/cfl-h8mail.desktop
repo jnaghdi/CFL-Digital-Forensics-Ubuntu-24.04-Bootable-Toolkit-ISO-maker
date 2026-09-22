@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=h8mail
+Comment=E-mail breach and credential OSINT
+Exec=mate-terminal --hide-menubar -t "h8mail" -- cfl-run h8mail
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;email;breach;leak;

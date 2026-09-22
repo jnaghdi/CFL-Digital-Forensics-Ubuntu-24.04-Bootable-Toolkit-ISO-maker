@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rsakeyfind
+Comment=Find RSA keys in memory
+Exec=mate-terminal --hide-menubar -t "rsakeyfind" -- cfl-run rsakeyfind
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

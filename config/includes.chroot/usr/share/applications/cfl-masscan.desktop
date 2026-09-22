@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=masscan
+Comment=Mass port scanner
+Exec=mate-terminal --hide-menubar -t "masscan" -- cfl-run masscan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

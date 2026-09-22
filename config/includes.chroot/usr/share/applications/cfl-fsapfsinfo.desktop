@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fsapfsinfo
+Comment=APFS volume information
+Exec=mate-terminal --hide-menubar -t "fsapfsinfo" -- cfl-run fsapfsinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

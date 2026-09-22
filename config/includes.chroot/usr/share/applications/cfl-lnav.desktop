@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=lnav
+Comment=Log file navigator
+Exec=mate-terminal --hide-menubar -t "lnav" -- cfl-run lnav
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

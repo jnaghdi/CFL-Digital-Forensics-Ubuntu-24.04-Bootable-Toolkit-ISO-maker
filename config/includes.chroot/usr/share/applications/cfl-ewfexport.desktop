@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ewfexport
+Comment=Export an EWF (E01) image back to raw/dd
+Exec=mate-terminal --hide-menubar -t "ewfexport" -- cfl-run ewfexport
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;imaging;

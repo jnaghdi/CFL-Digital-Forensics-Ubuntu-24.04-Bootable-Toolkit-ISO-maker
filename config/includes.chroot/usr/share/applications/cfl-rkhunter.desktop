@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rkhunter
+Comment=Rootkit hunter
+Exec=mate-terminal --hide-menubar -t "rkhunter" -- cfl-run rkhunter
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-IR;
+Keywords=forensics;ir;

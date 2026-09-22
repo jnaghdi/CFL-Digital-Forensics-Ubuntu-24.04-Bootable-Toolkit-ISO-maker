@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tshark
+Comment=Terminal Wireshark
+Exec=mate-terminal --hide-menubar -t "tshark" -- cfl-run tshark
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

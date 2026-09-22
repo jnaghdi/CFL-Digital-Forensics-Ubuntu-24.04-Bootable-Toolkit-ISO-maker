@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sfill
+Comment=Secure free-space wipe
+Exec=mate-terminal --hide-menubar -t "sfill" -- cfl-run sfill
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

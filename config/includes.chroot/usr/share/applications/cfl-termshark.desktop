@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=termshark
+Comment=TUI packet analyser
+Exec=mate-terminal --hide-menubar -t "termshark" -- cfl-run termshark
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

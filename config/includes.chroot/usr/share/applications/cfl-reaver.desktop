@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=reaver
+Comment=WPS PIN attack
+Exec=mate-terminal --hide-menubar -t "reaver" -- cfl-run reaver
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

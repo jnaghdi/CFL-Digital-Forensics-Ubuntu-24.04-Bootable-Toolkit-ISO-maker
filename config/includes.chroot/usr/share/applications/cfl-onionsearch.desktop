@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OnionSearch
+Comment=Dark-web (.onion) search - needs the tor service running
+Exec=mate-terminal --hide-menubar -t "OnionSearch" -- cfl-run onionsearch
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

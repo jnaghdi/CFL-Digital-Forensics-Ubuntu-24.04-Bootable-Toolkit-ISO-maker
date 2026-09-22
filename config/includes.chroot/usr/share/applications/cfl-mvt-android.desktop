@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MVT (Android)
+Comment=Mobile Verification Toolkit - Android IOC triage
+Exec=mate-terminal --hide-menubar -t "mvt-android" -- cfl-run mvt-android
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;android;spyware;ioc;

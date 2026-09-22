@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=SoapySDRUtil
+Comment=Probe and rate SDR hardware
+Exec=mate-terminal --hide-menubar -t "SoapySDRUtil" -- cfl-run SoapySDRUtil
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

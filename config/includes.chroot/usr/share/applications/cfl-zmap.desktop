@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=zmap
+Comment=Internet-wide scanner
+Exec=mate-terminal --hide-menubar -t "zmap" -- cfl-run zmap
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

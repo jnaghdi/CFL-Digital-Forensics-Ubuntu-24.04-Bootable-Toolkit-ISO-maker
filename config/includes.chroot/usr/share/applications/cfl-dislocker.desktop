@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dislocker
+Comment=Unlock BitLocker volumes (PALADIN Logical Imager parity)
+Exec=mate-terminal --hide-menubar -t "dislocker" -- cfl-run dislocker
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;imaging;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=AutoTimeliner
+Comment=Automated plaso super-timeline generation
+Exec=mate-terminal --hide-menubar -t "AutoTimeliner" -- cfl-run autotimeliner
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;

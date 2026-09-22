@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VLEAPP
+Comment=Vehicle logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "VLEAPP" -- cfl-run vleapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

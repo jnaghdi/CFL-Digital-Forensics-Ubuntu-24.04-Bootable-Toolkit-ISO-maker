@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sqlite3
+Comment=SQLite database shell
+Exec=mate-terminal --hide-menubar -t "sqlite3" -- cfl-run sqlite3
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

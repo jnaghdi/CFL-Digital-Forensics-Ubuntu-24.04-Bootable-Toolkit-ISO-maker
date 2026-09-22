@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PDFResurrect
+Comment=Recover previous versions of PDF documents
+Exec=mate-terminal --hide-menubar -t "PDFResurrect" -- cfl-run pdfresurrect
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;

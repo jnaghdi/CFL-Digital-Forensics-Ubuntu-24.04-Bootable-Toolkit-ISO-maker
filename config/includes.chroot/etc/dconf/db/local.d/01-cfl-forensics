@@ -1,0 +1,246 @@
+# CFL Forensics desktop defaults (compiled with `dconf update`)
+
+[org/gnome/desktop/interface]
+gtk-theme='WhiteSur-Dark'
+icon-theme='WhiteSur-dark'
+cursor-theme='WhiteSur-cursors'
+font-name='Inter 11'
+document-font-name='Inter 11'
+monospace-font-name='JetBrains Mono 11'
+color-scheme='prefer-dark'
+clock-show-weekday=true
+show-battery-percentage=true
+enable-hot-corners=true
+
+[org/gnome/desktop/wm/preferences]
+# macOS-style window controls on the left
+button-layout='close,minimize,maximize:'
+titlebar-font='Inter Bold 11'
+
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/cfl-forensics/cfl-wallpaper.png'
+picture-uri-dark='file:///usr/share/backgrounds/cfl-forensics/cfl-wallpaper.png'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/cfl-forensics/cfl-wallpaper.png'
+lock-enabled=true
+
+[org/gnome/shell]
+# every extension shipped in the image is enabled by default, so all
+# toggles in the Extensions app are ON (unused stock ones are pruned
+# from the image by the 0660 desktop hook)
+disable-user-extensions=false
+enabled-extensions=['ubuntu-dock@ubuntu.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'ding@rastersoft.com', 'arcmenu@arcmenu.com', 'ubuntu-appindicators@ubuntu.com']
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.wireshark.Wireshark.desktop', 'cfl-guymager.desktop', 'ghidra.desktop', 'jadx-gui.desktop', 'com.giuspen.cherrytree.desktop', 'org.gnome.Settings.desktop']
+
+[org/gnome/shell/extensions/user-theme]
+name='WhiteSur-Dark'
+
+[org/gnome/shell/extensions/arcmenu]
+# no "ArcMenu v65 Released!" notification
+update-notifier-enabled=false
+update-notifier-project-version=65
+# menu button (top-left): the CFL logo icon followed by the label "Apps"
+menu-button-appearance='Icon_Text'
+menu-button-icon='Custom_Icon'
+custom-menu-button-icon='/usr/share/pixmaps/cfl-logo.png'
+custom-menu-button-icon-size=22.0
+custom-menu-button-text='Apps'
+# Parrot 7.3 "Echo" look: charcoal panels, forest-green selection accent
+override-menu-theme=true
+menu-background-color='rgba(27,30,35,0.98)'
+menu-foreground-color='rgb(214,218,224)'
+menu-border-color='rgb(14,16,19)'
+menu-border-width=1
+menu-border-radius=14
+menu-font-size=11
+menu-separator-color='rgba(255,255,255,0.08)'
+menu-item-hover-bg-color='rgb(45,117,82)'
+menu-item-hover-fg-color='rgb(255,255,255)'
+menu-item-active-bg-color='rgb(38,99,70)'
+menu-item-active-fg-color='rgb(255,255,255)'
+menu-button-fg-color=(true,'rgb(235,238,242)')
+menu-button-bg-color=(true,'rgba(45,117,82,0.28)')
+menu-button-hover-bg-color=(true,'rgba(45,117,82,0.55)')
+menu-button-hover-fg-color=(true,'rgb(255,255,255)')
+menu-button-active-bg-color=(true,'rgba(45,117,82,0.75)')
+menu-button-active-fg-color=(true,'rgb(255,255,255)')
+
+[org/gnome/shell/extensions/dash-to-dock]
+dock-position='BOTTOM'
+dock-alignment='CENTER'
+extend-height=false
+dock-fixed=false
+autohide=true
+intellihide=true
+transparency-mode='DYNAMIC'
+dash-max-icon-size=44
+icon-size-fixed=true
+running-indicator-style='DOTS'
+show-apps-at-top=true
+show-trash=true
+show-mounts=true
+click-action='MINIMIZE'
+scroll-action='cycle-windows'
+custom-theme-shrink=true
+disable-overview-on-startup=true
+
+# --- forensic-workstation hygiene ---
+[org/gnome/desktop/privacy]
+remember-recent-files=false
+
+[org/gnome/desktop/datetime]
+# keep the workstation on UTC unless the examiner changes it
+automatic-timezone=false
+
+[org/gnome/desktop/session]
+# never blank the screen mid-acquisition
+idle-delay=uint32 0
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+
+[org/gnome/desktop/notifications]
+show-in-lock-screen=false
+
+[org/gnome/nautilus/preferences]
+show-hidden-files=true
+default-folder-viewer='list-view'
+
+# --- Terminal: Parrot 7.3 style (green-on-black) default profile ---
+[org/gnome/terminal/legacy/profiles:]
+default='3c9e1a2b-7d4f-4e5a-9b6c-1f2a3d4e5b60'
+list=['3c9e1a2b-7d4f-4e5a-9b6c-1f2a3d4e5b60']
+
+[org/gnome/terminal/legacy/profiles:/:3c9e1a2b-7d4f-4e5a-9b6c-1f2a3d4e5b60]
+exit-action='close'
+visible-name='CFL Terminal'
+use-theme-colors=false
+background-color='rgb(11,15,12)'
+foreground-color='rgb(89,216,105)'
+bold-is-bright=true
+palette=['rgb(20,25,21)', 'rgb(224,85,85)', 'rgb(89,216,105)', 'rgb(224,205,95)', 'rgb(85,170,224)', 'rgb(205,130,224)', 'rgb(85,216,200)', 'rgb(218,221,216)', 'rgb(92,104,94)', 'rgb(240,125,125)', 'rgb(130,236,145)', 'rgb(240,232,140)', 'rgb(125,195,240)', 'rgb(228,165,228)', 'rgb(135,240,215)', 'rgb(255,255,255)']
+audible-bell=false
+use-system-font=false
+font='JetBrains Mono 12'
+cursor-blink-mode='on'
+scrollbar-policy='never'
+
+# --- Terminal ENGINE: MATE Terminal (the Parrot Security engine) ---
+# Every CFL tool launcher opens in mate-terminal; give it the same
+# Parrot 7.3 green-on-black look as the GNOME Terminal profile above.
+[org/mate/terminal/global]
+profile-list=['default']
+active-profile='default'
+
+[org/mate/terminal/profiles/default]
+# When the command in a terminal window finishes, close the window. The CFL
+# tool launchers keep their window open by running an interactive SHELL after
+# the tool (see /usr/local/bin/cfl-run), so this must NOT be 'hold' (which
+# shows the "child process exited ... Relaunch" bar) and must NEVER be
+# 'restart' (which would re-run the tool in a loop).
+exit-action='close'
+visible-name='CFL Terminal'
+use-theme-colors=false
+background-color='#0B0F0C'
+foreground-color='#59D869'
+bold-color-same-as-fg=true
+palette='#141915:#E05555:#59D869:#E0CD5F:#55AAE0:#CD82E0:#55D8C8:#DADDD8:#5C685E:#F07D7D:#82EC91:#F0E88C:#7DC3F0:#E4A5E4:#87F0D7:#FFFFFF'
+use-system-font=false
+font='JetBrains Mono 12'
+allow-bold=true
+silent-bell=true
+default-show-menubar=false
+scrollbar-position='hidden'
+scrollback-unlimited=true
+scrollback-on-keystroke=true
+cursor-blink='on'
+cursor-shape='block'
+title='CFL Terminal'
+use-custom-default-size=true
+default-size-columns=110
+default-size-rows=32
+
+# --- forensic default: never auto-mount or auto-open attached media ---
+[org/gnome/desktop/media-handling]
+automount=false
+automount-open=false
+autorun-never=true
+
+# --- CFL menu in the GNOME app grid --------------------------------------
+# Vanilla GNOME has no menu tree; it groups the app grid by these folders.
+# Each folder collects the launchers carrying the matching X-CFL-* category,
+# so the CFL tool categories are visible even if ArcMenu is not installed.
+# (ArcMenu, when present, renders the full tree from the XDG .menu file.)
+[org/gnome/desktop/app-folders]
+folder-children=['cfl-acquisition', 'cfl-filesystems', 'cfl-memory', 'cfl-network', 'cfl-malware-re', 'cfl-passwords', 'cfl-stego', 'cfl-timeline', 'cfl-docs', 'cfl-mobile', 'cfl-osint', 'cfl-ir', 'cfl-wipe', 'cfl-sdr']
+
+[org/gnome/desktop/app-folders/folders/cfl-acquisition]
+name='Acquisition and Imaging'
+translate=false
+categories=['X-CFL-Acquisition']
+
+[org/gnome/desktop/app-folders/folders/cfl-filesystems]
+name='Disk and File Systems'
+translate=false
+categories=['X-CFL-FileSystems']
+
+[org/gnome/desktop/app-folders/folders/cfl-memory]
+name='Memory Forensics'
+translate=false
+categories=['X-CFL-Memory']
+
+[org/gnome/desktop/app-folders/folders/cfl-network]
+name='Network Forensics'
+translate=false
+categories=['X-CFL-Network']
+
+[org/gnome/desktop/app-folders/folders/cfl-malware-re]
+name='Malware and Reverse Engineering'
+translate=false
+categories=['X-CFL-MalwareRE']
+
+[org/gnome/desktop/app-folders/folders/cfl-passwords]
+name='Passwords and Cracking'
+translate=false
+categories=['X-CFL-Passwords']
+
+[org/gnome/desktop/app-folders/folders/cfl-stego]
+name='Steganography'
+translate=false
+categories=['X-CFL-Stego']
+
+[org/gnome/desktop/app-folders/folders/cfl-timeline]
+name='Timeline and Artefacts'
+translate=false
+categories=['X-CFL-Timeline']
+
+[org/gnome/desktop/app-folders/folders/cfl-docs]
+name='Documents and E-Discovery'
+translate=false
+categories=['X-CFL-Docs']
+
+[org/gnome/desktop/app-folders/folders/cfl-mobile]
+name='Mobile Forensics'
+translate=false
+categories=['X-CFL-Mobile']
+
+[org/gnome/desktop/app-folders/folders/cfl-osint]
+name='OSINT'
+translate=false
+categories=['X-CFL-OSINT']
+
+[org/gnome/desktop/app-folders/folders/cfl-ir]
+name='Incident Response'
+translate=false
+categories=['X-CFL-IR']
+
+[org/gnome/desktop/app-folders/folders/cfl-wipe]
+name='Secure Wiping'
+translate=false
+categories=['X-CFL-Wipe']
+
+[org/gnome/desktop/app-folders/folders/cfl-sdr]
+name='SDR and Radio'
+translate=false
+categories=['X-CFL-SDR']

@@ -1,0 +1,40 @@
+# CFL Forensics - build-time debconf answers.
+# Fed to `debconf-set-selections` inside the chroot before the base stage so
+# that no package postinst blocks the non-interactive build or tries to touch
+# the build host's bootloader/hardware.
+
+# --- GRUB: never auto-install to a disk during the chroot build --------------
+# grub-pc is present only to satisfy grub-efi-amd64-signed's dependency and to
+# provide i386-pc modules for the BIOS El Torito image. It must not run
+# grub-install against the build host.
+grub-pc         grub-pc/install_devices                         multiselect
+grub-pc         grub-pc/install_devices_empty                   boolean true
+grub-pc         grub-pc/install_devices_disks_changed           multiselect
+grub-pc         grub-pc/postrm_purge_boot_grub                  boolean false
+grub-pc         grub-pc/timeout                                 string  10
+grub-pc         grub-pc/hidden_timeout                          boolean false
+grub-pc         grub2/linux_cmdline                             string
+grub-pc         grub2/linux_cmdline_default                     string  "quiet splash"
+grub-efi-amd64  grub2/no_efi_extra_removable                    boolean true
+grub-efi-amd64  grub2/force_efi_extra_removable                 boolean false
+
+# --- Wireshark: allow non-root capture group setup silently ------------------
+wireshark-common wireshark-common/install-setuid                boolean true
+
+# --- keep the build quiet ----------------------------------------------------
+needrestart     needrestart/restart-without-asking              boolean true
+debconf         debconf/frontend                                select  Noninteractive
+debconf         debconf/priority                                select  critical
+keyboard-configuration keyboard-configuration/layoutcode        string  @LIVE_KEYMAP@
+console-setup   console-setup/charmap47                         select  UTF-8
+tzdata          tzdata/Areas                                    select  Etc
+tzdata          tzdata/Zones/Etc                                select  UTC
+
+# --- grub-efi-amd64 (installed to satisfy grub-efi-amd64-signed; must not
+#     prompt or touch NVMe/NVRAM during the chroot build) --------------------
+grub-efi-amd64  grub2/update_nvram                             boolean false
+grub-efi-amd64  grub2/force_efi_extra_removable                boolean false
+grub-efi-amd64  grub2/no_efi_extra_removable                   boolean true
+grub-efi-amd64  grub-efi/install_devices                       multiselect
+grub-efi-amd64  grub-efi/install_devices_empty                 boolean true
+grub-efi-amd64  grub-pc/install_devices_empty                  boolean true

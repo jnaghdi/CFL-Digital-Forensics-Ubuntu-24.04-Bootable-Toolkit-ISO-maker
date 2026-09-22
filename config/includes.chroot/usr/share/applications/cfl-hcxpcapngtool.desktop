@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hcxpcapngtool
+Comment=Convert captures for hashcat
+Exec=mate-terminal --hide-menubar -t "hcxpcapngtool" -- cfl-run hcxpcapngtool
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

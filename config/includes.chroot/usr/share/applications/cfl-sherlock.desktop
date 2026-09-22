@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sherlock
+Comment=Username search across networks
+Exec=mate-terminal --hide-menubar -t "sherlock" -- cfl-run sherlock
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

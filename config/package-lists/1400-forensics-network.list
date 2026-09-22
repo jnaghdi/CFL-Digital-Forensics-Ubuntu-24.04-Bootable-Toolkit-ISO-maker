@@ -1,0 +1,19 @@
+# Network forensics & traffic analysis
+wireshark termshark tcpdump ngrep
+tshark
+netsniff-ng p0f ettercap-text-only arpwatch
+driftnet dsniff chaosreader tcpick
+tcpflow tcptrace nmap masscan
+zmap ssldump sslscan testssl.sh
+sngrep sipvicious packit pcapfix
+pcaputils horst netdiscover ike-scan
+hping3 braa onesixtyone bettercap
+netcat-openbsd socat ncat bind9-dnsutils
+whois geoip-bin arp-scan fping
+iperf3 proxychains4
+
+# Path diagnostics (CSI parity)
+mtr lft
+
+# Replay & live monitoring (Kali parity)
+tcpreplay zenmap darkstat etherape

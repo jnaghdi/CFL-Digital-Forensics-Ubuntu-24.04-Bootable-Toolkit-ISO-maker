@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=origami pdfwalker
+Comment=Interactive PDF structure explorer (origami)
+Exec=mate-terminal --hide-menubar -t "pdfwalker" -- cfl-run pdfwalker
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;pdf;structure;

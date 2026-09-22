@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=exif
+Comment=EXIF information
+Exec=mate-terminal --hide-menubar -t "exif" -- cfl-run exif
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

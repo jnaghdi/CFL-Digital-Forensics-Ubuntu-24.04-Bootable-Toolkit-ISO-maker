@@ -1,0 +1,48 @@
+#!/bin/bash
+# 0660-parrot-desktop.hook (Ubuntu)
+#  - wire the Parrot 7.3-style prompt into every user's bashrc
+#  - prune stock GNOME Shell extensions we do not ship, so every toggle in the
+#    Extensions app is ON by default (only shipped-and-enabled ones remain)
+set -e
+echo "CFL: 0660 Parrot-style desktop polish"
+
+## 1. Parrot-style bash prompt -----------------------------------------
+for rc in /etc/skel/.bashrc /root/.bashrc; do
+    if [ -f "$rc" ] && ! grep -q 'cfl-parrot-prompt' "$rc"; then
+        cat >> "$rc" <<'RC'
+
+# CFL: Parrot 7.3-style prompt
+if [ -f /etc/cfl-parrot-prompt.sh ]; then
+    . /etc/cfl-parrot-prompt.sh
+fi
+RC
+    fi
+done
+
+## 2. Prune extensions we do not ship -----------------------------------
+# Keep the Ubuntu-packaged UUIDs plus ArcMenu (installed from upstream).
+KEEP=' ubuntu-dock@ubuntu.com ubuntu-appindicators@ubuntu.com ding@rastersoft.com user-theme@gnome-shell-extensions.gcampax.github.com arcmenu@arcmenu.com '
+for EXT in /usr/share/gnome-shell/extensions; do
+    [ -d "$EXT" ] || continue
+    for d in "$EXT"/*/; do
+        [ -e "$d" ] || continue
+        uuid=$(basename "$d")
+        case "$KEEP" in
+            *" $uuid "*) : ;;
+            *) rm -rf "$d"; echo "CFL: pruned unused extension $uuid" ;;
+        esac
+    done
+done
+
+## 3. Assert every remaining extension is enabled by default ------------
+DCONF=/etc/dconf/db/local.d/01-cfl-forensics
+EXT=/usr/share/gnome-shell/extensions
+if [ -d "$EXT" ]; then
+    for d in "$EXT"/*/; do
+        [ -e "$d" ] || continue
+        uuid=$(basename "$d")
+        grep -q "'$uuid'" "$DCONF" || echo "CFL WARNING: $uuid not in enabled-extensions default" >&2
+    done
+fi
+echo "CFL: extension set finalised"
+exit 0

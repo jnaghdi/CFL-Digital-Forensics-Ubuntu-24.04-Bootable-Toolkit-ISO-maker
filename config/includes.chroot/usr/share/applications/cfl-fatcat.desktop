@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fatcat
+Comment=FAT filesystem explorer
+Exec=mate-terminal --hide-menubar -t "fatcat" -- cfl-run fatcat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

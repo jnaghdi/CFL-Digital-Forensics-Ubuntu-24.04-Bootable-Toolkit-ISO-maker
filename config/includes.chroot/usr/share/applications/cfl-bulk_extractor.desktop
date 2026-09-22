@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bulk_extractor
+Comment=Bulk artifact extraction
+Exec=mate-terminal --hide-menubar -t "bulk_extractor" -- cfl-run bulk_extractor
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pdfid
+Comment=Triage a PDF for suspicious objects
+Exec=mate-terminal --hide-menubar -t "pdfid" -- cfl-run pdfid
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;

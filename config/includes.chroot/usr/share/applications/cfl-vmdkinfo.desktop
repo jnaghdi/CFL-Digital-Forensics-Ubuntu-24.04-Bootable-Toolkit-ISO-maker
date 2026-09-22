@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=vmdkinfo
+Comment=VMDK image information
+Exec=mate-terminal --hide-menubar -t "vmdkinfo" -- cfl-run vmdkinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fsapfsmount
+Comment=Mount APFS volumes
+Exec=mate-terminal --hide-menubar -t "fsapfsmount" -- cfl-run fsapfsmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

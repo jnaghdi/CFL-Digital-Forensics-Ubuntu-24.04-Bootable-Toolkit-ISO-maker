@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ffuf
+Comment=Fast web content discovery
+Exec=mate-terminal --hide-menubar -t "ffuf" -- cfl-run ffuf
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;web;fuzz;discovery;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hcxhashtool
+Comment=Hash conversion for hcxtools
+Exec=mate-terminal --hide-menubar -t "hcxhashtool" -- cfl-run hcxhashtool
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

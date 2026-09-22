@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=olevba
+Comment=VBA macro analyser
+Exec=mate-terminal --hide-menubar -t "olevba" -- cfl-run olevba
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

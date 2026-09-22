@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=grokevt-parselog
+Comment=EVT log parsing
+Exec=mate-terminal --hide-menubar -t "grokevt-parselog" -- cfl-run grokevt-parselog
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pestr
+Comment=PE strings extractor
+Exec=mate-terminal --hide-menubar -t "pestr" -- cfl-run pestr
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

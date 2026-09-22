@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ent
+Comment=Entropy and randomness analysis of a file
+Exec=mate-terminal --hide-menubar -t "ent" -- cfl-run ent
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;entropy;encryption;

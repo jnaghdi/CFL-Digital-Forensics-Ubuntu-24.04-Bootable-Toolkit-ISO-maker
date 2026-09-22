@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=JADX GUI
+Comment=Android DEX to Java decompiler
+Exec=/opt/jadx/bin/jadx-gui
+Icon=application-x-executable
+Terminal=false
+Categories=X-CFL-Mobile;

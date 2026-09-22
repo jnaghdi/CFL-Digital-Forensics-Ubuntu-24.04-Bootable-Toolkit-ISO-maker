@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=zuluCrypt
+Comment=Manage VeraCrypt/TrueCrypt/LUKS encrypted volumes (GUI)
+Exec=zuluCrypt-gui
+Icon=cfl-logo
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;veracrypt;truecrypt;luks;encrypted;

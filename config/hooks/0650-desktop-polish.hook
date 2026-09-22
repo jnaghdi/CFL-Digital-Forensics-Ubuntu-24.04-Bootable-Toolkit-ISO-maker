@@ -1,0 +1,29 @@
+#!/bin/bash
+# CFL Forensics - desktop polish (Ubuntu)
+#  - silence GNOME's first-login tour / initial setup
+#  - drop any distro Calamares branding that a dependency may have pulled in,
+#    so our /etc/calamares (installed by the overlay stage) stays authoritative
+echo "=== [setup] desktop polish ==="
+
+# 1. No "Take a tour" / gnome-initial-setup welcome for any user
+rm -f /etc/xdg/autostart/org.gnome.Tour.desktop
+rm -f /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+mkdir -p /etc/skel/.config
+echo "yes" > /etc/skel/.config/gnome-initial-setup-done
+
+# 2. Remove any distro Calamares settings package (none is expected on Ubuntu,
+#    but guard against a Recommends pulling calamares-settings-* in).
+for pkg in $(dpkg-query -W -f='${Package}\n' 'calamares-settings-*' 2>/dev/null); do
+    echo "removing $pkg (our /etc/calamares config is authoritative)"
+    apt-get -y purge "$pkg" || true
+done
+
+# 3. ArcMenu "CFL MENU" button emphasis (bolder, larger) - theme CSS append
+for css in /usr/share/themes/WhiteSur-Dark/gnome-shell/gnome-shell.css \
+           /usr/share/themes/WhiteSur-Light/gnome-shell/gnome-shell.css; do
+    [ -f "$css" ] || continue
+    grep -q "CFL: ArcMenu button emphasis" "$css" 2>/dev/null && continue
+    printf '\n/* CFL: ArcMenu button emphasis */\n.arcmenu-menu-button StLabel { font-weight: 700; font-size: 1.1em; letter-spacing: 0.6px; }\n' >> "$css"
+done
+
+echo "=== [setup] desktop polish done ==="

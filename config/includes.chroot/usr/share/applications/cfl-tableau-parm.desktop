@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tableau-parm
+Comment=Tableau write-blocker control
+Exec=mate-terminal --hide-menubar -t "tableau-parm" -- cfl-run tableau-parm
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

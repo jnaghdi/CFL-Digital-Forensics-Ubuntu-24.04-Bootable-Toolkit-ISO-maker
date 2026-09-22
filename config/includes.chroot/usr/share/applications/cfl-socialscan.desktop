@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=socialscan
+Comment=Username / e-mail availability and OSINT lookup
+Exec=mate-terminal --hide-menubar -t "socialscan" -- cfl-run socialscan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;username;email;

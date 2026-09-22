@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=unrtf
+Comment=RTF conversion
+Exec=mate-terminal --hide-menubar -t "unrtf" -- cfl-run unrtf
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

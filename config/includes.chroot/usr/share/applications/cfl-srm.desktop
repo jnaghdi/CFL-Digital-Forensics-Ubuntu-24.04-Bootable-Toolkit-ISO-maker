@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=srm
+Comment=Secure remove
+Exec=mate-terminal --hide-menubar -t "srm" -- cfl-run srm
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

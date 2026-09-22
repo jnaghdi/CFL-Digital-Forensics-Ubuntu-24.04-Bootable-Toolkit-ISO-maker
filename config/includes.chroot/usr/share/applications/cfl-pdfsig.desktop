@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pdfsig
+Comment=PDF signature verification
+Exec=mate-terminal --hide-menubar -t "pdfsig" -- cfl-run pdfsig
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

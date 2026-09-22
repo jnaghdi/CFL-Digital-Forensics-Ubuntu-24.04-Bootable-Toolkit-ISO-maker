@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=aeskeyfind
+Comment=Find AES keys in memory
+Exec=mate-terminal --hide-menubar -t "aeskeyfind" -- cfl-run aeskeyfind
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=candump (CAN bus)
+Comment=Capture vehicle CAN-bus traffic
+Exec=mate-terminal --hide-menubar -t "candump (CAN bus)" -- cfl-run candump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;

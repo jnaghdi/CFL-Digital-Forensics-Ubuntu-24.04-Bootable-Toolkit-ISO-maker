@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Toutatis
+Comment=Instagram account OSINT
+Exec=mate-terminal --hide-menubar -t "toutatis" -- cfl-run toutatis
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;instagram;social;

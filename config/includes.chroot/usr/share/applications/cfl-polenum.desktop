@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=polenum
+Comment=Windows password policy dump
+Exec=mate-terminal --hide-menubar -t "polenum" -- cfl-run polenum
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

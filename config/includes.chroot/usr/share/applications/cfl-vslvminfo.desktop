@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=vslvminfo
+Comment=Linux LVM information
+Exec=mate-terminal --hide-menubar -t "vslvminfo" -- cfl-run vslvminfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

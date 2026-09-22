@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=catdoc
+Comment=Word document text extraction
+Exec=mate-terminal --hide-menubar -t "catdoc" -- cfl-run catdoc
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

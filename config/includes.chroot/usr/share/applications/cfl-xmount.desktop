@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=xmount
+Comment=Convert between disk image formats
+Exec=mate-terminal --hide-menubar -t "xmount" -- cfl-run xmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

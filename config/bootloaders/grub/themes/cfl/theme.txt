@@ -1,0 +1,54 @@
+# CFL Forensics - GRUB boot-menu theme (navy CFL branding)
+desktop-image: "splash.png"
+desktop-color: "#071426"
+title-color: "#e8eef6"
+title-font: "Unifont Regular 16"
+title-text: ""
+message-font: "Unifont Regular 16"
+message-color: "#c7d3e6"
+terminal-font: "Unifont Regular 16"
+
+# bottom help bar
++ label {
+    top      = 100%-42
+    left     = 0
+    width    = 100%
+    height   = 20
+    text     = "Enter: boot    E: edit    C: command line    ↑↓: choose    Esc: back"
+    align    = "center"
+    color    = "#8fa4c4"
+    font     = "Unifont Regular 16"
+}
+
+# boot menu
++ boot_menu {
+    left               = 12%
+    width              = 76%
+    top                = 42%
+    height             = 46%
+    item_color         = "#c7d3e6"
+    item_font          = "Unifont Regular 16"
+    selected_item_color = "#ffffff"
+    selected_item_font = "Unifont Regular 16"
+    item_height        = 24
+    item_padding       = 4
+    item_spacing       = 6
+    icon_width         = 0
+    icon_height        = 0
+    item_icon_space    = 0
+}
+
+# countdown bar
++ progress_bar {
+    id         = "__timeout__"
+    left       = 12%
+    top        = 100%-70
+    height     = 16
+    width      = 76%
+    font       = "Unifont Regular 16"
+    text_color = "#e8eef6"
+    fg_color   = "#3f7fd0"
+    bg_color   = "#123a6e"
+    border_color = "#3f7fd0"
+    text       = "Booting the highlighted entry in %d s …"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tsk_loaddb
+Comment=Populate a TSK database
+Exec=mate-terminal --hide-menubar -t "tsk_loaddb" -- cfl-run tsk_loaddb
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

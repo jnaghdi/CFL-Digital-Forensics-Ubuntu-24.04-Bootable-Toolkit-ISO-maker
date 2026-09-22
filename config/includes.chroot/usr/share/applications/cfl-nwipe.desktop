@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=nwipe
+Comment=DBAN-style disk wipe
+Exec=mate-terminal --hide-menubar -t "nwipe" -- cfl-run nwipe
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

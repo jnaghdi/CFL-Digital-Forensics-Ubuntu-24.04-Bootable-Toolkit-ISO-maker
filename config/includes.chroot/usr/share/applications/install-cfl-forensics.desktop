@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Install CFL Forensics
+Comment=Install CFL Forensics alongside your existing operating system
+Exec=calamares
+Icon=cfl-logo
+Terminal=false
+Categories=System;
+Keywords=install;installer;

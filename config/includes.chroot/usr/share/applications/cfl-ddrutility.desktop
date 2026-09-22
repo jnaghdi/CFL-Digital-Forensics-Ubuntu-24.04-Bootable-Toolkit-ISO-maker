@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ddrutility
+Comment=ddrescue helper utilities
+Exec=mate-terminal --hide-menubar -t "ddrutility" -- cfl-run ddrutility
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

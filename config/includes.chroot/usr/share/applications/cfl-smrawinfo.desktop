@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=smrawinfo
+Comment=Split RAW image information
+Exec=mate-terminal --hide-menubar -t "smrawinfo" -- cfl-run smrawinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

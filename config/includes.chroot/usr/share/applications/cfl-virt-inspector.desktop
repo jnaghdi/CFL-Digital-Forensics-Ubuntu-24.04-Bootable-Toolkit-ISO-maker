@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=virt-inspector
+Comment=Inspect a VM disk image (OS, apps, users) without booting it
+Exec=mate-terminal --hide-menubar -t "virt-inspector" -- cfl-run virt-inspector
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;vm;disk;image;qcow2;vmdk;

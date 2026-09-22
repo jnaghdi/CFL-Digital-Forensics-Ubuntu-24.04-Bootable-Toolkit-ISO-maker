@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=netdiscover
+Comment=ARP network discovery
+Exec=mate-terminal --hide-menubar -t "netdiscover" -- cfl-run netdiscover
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

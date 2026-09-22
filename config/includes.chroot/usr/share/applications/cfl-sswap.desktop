@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sswap
+Comment=Secure swap wipe
+Exec=mate-terminal --hide-menubar -t "sswap" -- cfl-run sswap
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

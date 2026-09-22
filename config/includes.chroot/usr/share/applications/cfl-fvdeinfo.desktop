@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fvdeinfo
+Comment=FileVault volume information
+Exec=mate-terminal --hide-menubar -t "fvdeinfo" -- cfl-run fvdeinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

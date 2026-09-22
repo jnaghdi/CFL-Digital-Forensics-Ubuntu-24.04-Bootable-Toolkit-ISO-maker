@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=exiflooter
+Comment=Geolocation from metadata
+Exec=mate-terminal --hide-menubar -t "exiflooter" -- cfl-run exiflooter
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=wfuzz
+Comment=Web application fuzzer
+Exec=mate-terminal --hide-menubar -t "wfuzz" -- cfl-run wfuzz
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;web;fuzz;

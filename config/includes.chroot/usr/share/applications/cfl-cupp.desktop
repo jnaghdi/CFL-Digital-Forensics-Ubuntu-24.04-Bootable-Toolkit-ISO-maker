@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=cupp
+Comment=Profiling wordlist generator
+Exec=mate-terminal --hide-menubar -t "cupp" -- cfl-run cupp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

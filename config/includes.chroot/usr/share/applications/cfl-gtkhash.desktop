@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GtkHash
+Comment=Compute and verify file checksums
+Exec=gtkhash
+Icon=applications-utilities
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;

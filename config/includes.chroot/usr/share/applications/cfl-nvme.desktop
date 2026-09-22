@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=nvme
+Comment=NVMe device management
+Exec=mate-terminal --hide-menubar -t "nvme" -- cfl-run nvme
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

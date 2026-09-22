@@ -1,0 +1,15 @@
+[Unit]
+Description=CFL Forensics live-session setup (permissions, write-block default)
+Documentation=https://cflab.uk/
+DefaultDependencies=no
+After=local-fs.target
+Before=display-manager.service gdm.service
+ConditionKernelCommandLine=boot=casper
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/cfl-live-setup
+
+[Install]
+WantedBy=multi-user.target

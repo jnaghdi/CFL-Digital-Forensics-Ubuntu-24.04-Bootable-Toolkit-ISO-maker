@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=enjarify
+Comment=DEX to Java bytecode
+Exec=mate-terminal --hide-menubar -t "enjarify" -- cfl-run enjarify
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

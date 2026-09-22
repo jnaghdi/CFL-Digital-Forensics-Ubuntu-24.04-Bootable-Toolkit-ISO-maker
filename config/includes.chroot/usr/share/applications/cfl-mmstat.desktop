@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mmstat
+Comment=Partition statistics (TSK)
+Exec=mate-terminal --hide-menubar -t "mmstat" -- cfl-run mmstat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

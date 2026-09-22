@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=email2phonenumber
+Comment=Derive phone numbers from email addresses
+Exec=mate-terminal --hide-menubar -t "email2phonenumber" -- cfl-run email2phonenumber
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

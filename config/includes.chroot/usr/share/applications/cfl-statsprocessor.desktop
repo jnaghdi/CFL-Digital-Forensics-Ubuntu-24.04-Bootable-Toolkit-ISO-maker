@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=statsprocessor
+Comment=Statistical word generator
+Exec=mate-terminal --hide-menubar -t "statsprocessor" -- cfl-run statsprocessor
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

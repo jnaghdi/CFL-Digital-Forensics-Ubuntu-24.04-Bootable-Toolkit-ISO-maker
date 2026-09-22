@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=cewl
+Comment=Custom wordlist generator
+Exec=mate-terminal --hide-menubar -t "cewl" -- cfl-run cewl
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

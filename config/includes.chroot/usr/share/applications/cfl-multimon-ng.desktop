@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=multimon-ng
+Comment=Decode POCSAG, FLEX, AFSK and other radio protocols
+Exec=mate-terminal --hide-menubar -t "multimon-ng" -- cfl-run multimon-ng
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

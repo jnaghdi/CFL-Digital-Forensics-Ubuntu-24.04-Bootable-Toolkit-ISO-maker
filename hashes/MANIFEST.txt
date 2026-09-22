@@ -1,0 +1,9 @@
+CFL Forensics build-source hash set
+generated : 2026-09-22 11:54:27 UTC
+files     : 459
+commit    : (not a git checkout)
+version   : 2.0
+excluded  : work/ iso/ cache/ .git/ hashes/ *.iso *.log
+
+verify all files:   sha256sum -c hashes/SHA256SUMS
+audit (hashdeep):   hashdeep -r -a -k hashes/hashdeep.txt .

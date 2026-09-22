@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dmg2img
+Comment=Convert Apple DMG images
+Exec=mate-terminal --hide-menubar -t "dmg2img" -- cfl-run dmg2img
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

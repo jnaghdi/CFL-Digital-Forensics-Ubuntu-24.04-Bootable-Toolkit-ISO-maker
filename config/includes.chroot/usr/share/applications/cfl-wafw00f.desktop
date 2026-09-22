@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=WAFW00F
+Comment=Identify web application firewalls
+Exec=mate-terminal --hide-menubar -t "WAFW00F" -- cfl-run wafw00f
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

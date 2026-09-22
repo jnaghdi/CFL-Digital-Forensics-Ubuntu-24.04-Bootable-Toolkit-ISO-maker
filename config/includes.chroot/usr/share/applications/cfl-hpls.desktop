@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hpls
+Comment=List HFS+ volumes
+Exec=mate-terminal --hide-menubar -t "hpls" -- cfl-run hpls
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

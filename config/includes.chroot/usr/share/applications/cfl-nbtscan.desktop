@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=nbtscan
+Comment=NetBIOS name scanner
+Exec=mate-terminal --hide-menubar -t "nbtscan" -- cfl-run nbtscan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;netbios;smb;windows;

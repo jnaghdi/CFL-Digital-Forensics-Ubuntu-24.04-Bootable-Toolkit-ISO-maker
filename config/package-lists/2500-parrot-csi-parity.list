@@ -1,0 +1,53 @@
+# Parrot OS / CSI Linux parity - tools verified present in the Ubuntu (noble)
+# archive that were not yet in the build. Several were "not in Debian trixie"
+# in the original comparison but ARE packaged by Ubuntu. Case-management
+# tooling is deliberately excluded (see docs/PARROT-CSI-PARITY.md).
+
+# --- disk / file-system / carving -------------------------------------------
+autopsy                 # Autopsy 2.x web front-end for The Sleuth Kit
+ssdeep                  # fuzzy hashing (context-triggered piecewise hashes)
+ent                     # entropy analysis of files
+guestfs-tools           # inspect/mount VM disk images without booting them
+libewf-dev              # EWF (E01) headers for tools built from source
+
+# --- memory / timeline (plaso from apt for the libs; the CLI comes via pipx) ---
+python3-plaso
+python3-dfvfs
+python3-artifacts
+
+# --- malware analysis / reverse engineering ----------------------------------
+radare2                 # RE framework (CLI)
+pev                     # PE file analysis toolkit (readpe, pescan, ...)
+gdb-multiarch           # debugger for foreign-arch binaries
+python3-pefile          # PE parsing library
+python3-pwntools        # binary analysis / exploit-dev library
+python3-scapy           # packet crafting library
+
+# --- network -------------------------------------------------------------------
+nbtscan                 # NetBIOS name scanner
+smbclient               # SMB client
+smbmap                  # SMB share enumeration
+sslsplit                # TLS interception (lab / IR replay)
+ffuf                    # web content discovery
+wfuzz                   # web fuzzing / discovery
+
+# --- OSINT / anonymity -------------------------------------------------------------
+torbrowser-launcher     # Tor Browser (downloads/verifies the official bundle)
+torsocks                # torify any command
+proxychains             # proxy chaining
+yt-dlp                  # media download for evidence capture
+
+# --- mobile -------------------------------------------------------------------------
+scrcpy                  # Android screen mirror/record
+android-sdk-platform-tools-common
+
+# --- passwords -------------------------------------------------------------------
+hashcat-data            # hashcat rules/charsets
+john-data               # john rules/wordlists
+
+# --- documents -----------------------------------------------------------------
+origami                 # Ruby PDF analysis framework
+ghostscript             # PostScript/PDF interpreter (renders/normalises PDFs)
+
+# --- encryption -------------------------------------------------------------------
+zulucrypt-gui zulucrypt-cli   # VeraCrypt/TrueCrypt/LUKS volume manager (VeraCrypt itself is not packaged)

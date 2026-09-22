@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mraptor
+Comment=Malicious macro detector
+Exec=mate-terminal --hide-menubar -t "mraptor" -- cfl-run mraptor
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

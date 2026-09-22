@@ -1,0 +1,3 @@
+# Memory acquisition & analysis (volatility3 via hook)
+lime-forensics-dkms dwarfdump aeskeyfind rsakeyfind
+memdump

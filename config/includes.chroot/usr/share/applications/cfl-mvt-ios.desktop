@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MVT (iOS)
+Comment=Mobile Verification Toolkit - iOS backup/filesystem IOC triage
+Exec=mate-terminal --hide-menubar -t "mvt-ios" -- cfl-run mvt-ios
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;ios;iphone;spyware;ioc;

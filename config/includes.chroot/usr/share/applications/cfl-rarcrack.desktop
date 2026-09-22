@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rarcrack
+Comment=RAR password cracker
+Exec=mate-terminal --hide-menubar -t "rarcrack" -- cfl-run rarcrack
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ssdeep
+Comment=Fuzzy (piecewise) hashing and similarity matching
+Exec=mate-terminal --hide-menubar -t "ssdeep" -- cfl-run ssdeep
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;hash;fuzzy;similarity;

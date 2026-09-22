@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rtfobj
+Comment=RTF object analyser
+Exec=mate-terminal --hide-menubar -t "rtfobj" -- cfl-run rtfobj
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

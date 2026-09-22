@@ -1,0 +1,79 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>Forensic Tools</Name>
+    <Directory>cfl-forensics.directory</Directory>
+    <Menu>
+      <Name>Acquisition &amp; Imaging</Name>
+      <Directory>cfl-acquisition.directory</Directory>
+      <Include><Category>X-CFL-Acquisition</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Disk &amp; File System Analysis</Name>
+      <Directory>cfl-filesystems.directory</Directory>
+      <Include><Category>X-CFL-FileSystems</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Memory Forensics</Name>
+      <Directory>cfl-memory.directory</Directory>
+      <Include><Category>X-CFL-Memory</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Network Forensics</Name>
+      <Directory>cfl-network.directory</Directory>
+      <Include><Category>X-CFL-Network</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Malware Analysis &amp; Reverse Engineering</Name>
+      <Directory>cfl-malware-re.directory</Directory>
+      <Include><Category>X-CFL-MalwareRE</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Password Recovery</Name>
+      <Directory>cfl-passwords.directory</Directory>
+      <Include><Category>X-CFL-Passwords</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Steganography</Name>
+      <Directory>cfl-stego.directory</Directory>
+      <Include><Category>X-CFL-Stego</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Timeline &amp; Artifact Analysis</Name>
+      <Directory>cfl-timeline.directory</Directory>
+      <Include><Category>X-CFL-Timeline</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Document &amp; Metadata Analysis</Name>
+      <Directory>cfl-docs.directory</Directory>
+      <Include><Category>X-CFL-Docs</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Mobile Forensics</Name>
+      <Directory>cfl-mobile.directory</Directory>
+      <Include><Category>X-CFL-Mobile</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Incident Response</Name>
+      <Directory>cfl-ir.directory</Directory>
+      <Include><Category>X-CFL-IR</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Signals Intelligence (SDR)</Name>
+      <Directory>cfl-sdr.directory</Directory>
+      <Include><Category>X-CFL-SDR</Category></Include>
+    </Menu>
+    <Menu>
+      <Name>Secure Wiping</Name>
+      <Directory>cfl-wipe.directory</Directory>
+      <Include><Category>X-CFL-Wipe</Category></Include>
+    </Menu>
+  </Menu>
+  <Menu>
+    <Name>OSINT Tools</Name>
+    <Directory>cfl-osint.directory</Directory>
+    <Include><Category>X-CFL-OSINT</Category></Include>
+  </Menu>
+</Menu>

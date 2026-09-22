@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=affinfo
+Comment=AFF image information
+Exec=mate-terminal --hide-menubar -t "affinfo" -- cfl-run affinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

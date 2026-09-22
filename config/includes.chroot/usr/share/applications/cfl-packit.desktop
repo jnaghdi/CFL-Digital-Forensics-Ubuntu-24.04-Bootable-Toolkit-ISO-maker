@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=packit
+Comment=Packet injection
+Exec=mate-terminal --hide-menubar -t "packit" -- cfl-run packit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

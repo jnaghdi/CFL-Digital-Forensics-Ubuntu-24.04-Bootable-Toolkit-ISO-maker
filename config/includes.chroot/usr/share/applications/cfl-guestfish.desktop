@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=guestfish
+Comment=libguestfs interactive shell
+Exec=mate-terminal --hide-menubar -t "guestfish" -- cfl-run guestfish
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=shred
+Comment=Secure file shredding
+Exec=mate-terminal --hide-menubar -t "shred" -- cfl-run shred
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

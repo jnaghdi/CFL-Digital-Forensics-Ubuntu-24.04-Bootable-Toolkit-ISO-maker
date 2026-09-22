@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rtl_433
+Comment=Decode ISM-band devices (sensors, fobs)
+Exec=mate-terminal --hide-menubar -t "rtl_433" -- cfl-run rtl_433
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;

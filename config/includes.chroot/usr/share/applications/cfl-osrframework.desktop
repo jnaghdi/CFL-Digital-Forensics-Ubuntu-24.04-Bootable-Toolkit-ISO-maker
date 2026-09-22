@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OSRFramework
+Comment=OSINT framework
+Exec=mate-terminal --hide-menubar -t "OSRFramework" -- cfl-run osrf
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=blkls
+Comment=Unallocated block extraction (TSK)
+Exec=mate-terminal --hide-menubar -t "blkls" -- cfl-run blkls
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fsntfsmount
+Comment=Mount NTFS via libfsntfs
+Exec=mate-terminal --hide-menubar -t "fsntfsmount" -- cfl-run fsntfsmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=hashdeep
+Comment=Recursive cryptographic hashing (md5/sha1/sha256/tiger/whirlpool)
+Exec=mate-terminal --hide-menubar -t "hashdeep" -- cfl-run hashdeep
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=jadx
+Comment=DEX to Java decompiler
+Exec=mate-terminal --hide-menubar -t "jadx" -- cfl-run jadx
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

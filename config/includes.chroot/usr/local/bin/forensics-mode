@@ -1,0 +1,30 @@
+#!/bin/bash
+# Toggle evidence-safe mode: force read-only treatment of attached block devices.
+set -e
+RULE=/usr/share/cfl-forensics/forensics-ro.rules
+DEST=/etc/udev/rules.d/99-forensics-ro.rules
+
+case "${1:-}" in
+  on)
+    install -m 644 "$RULE" "$DEST"
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=block || true
+    echo "Forensics mode ON."
+    echo "  - Newly attached drives are treated as read-only by the desktop."
+    echo "  - Use 'evidence-mount /dev/sdX1' for guaranteed ro,noexec mounts."
+    echo "  - A hardware write-blocker is still the gold standard."
+    ;;
+  off)
+    rm -f "$DEST"
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=block || true
+    echo "Forensics mode OFF."
+    ;;
+  status)
+    if [ -f "$DEST" ]; then echo "forensics-mode: ON"; else echo "forensics-mode: OFF"; fi
+    ;;
+  *)
+    echo "usage: forensics-mode {on|off|status}" >&2
+    exit 1
+    ;;
+esac

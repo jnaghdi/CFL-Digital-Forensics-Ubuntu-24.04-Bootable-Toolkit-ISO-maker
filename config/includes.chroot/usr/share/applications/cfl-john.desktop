@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=john
+Comment=John the Ripper
+Exec=mate-terminal --hide-menubar -t "john" -- cfl-run john
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

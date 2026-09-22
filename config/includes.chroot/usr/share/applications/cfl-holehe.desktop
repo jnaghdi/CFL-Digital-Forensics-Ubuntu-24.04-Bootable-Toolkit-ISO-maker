@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=holehe
+Comment=Check which sites an e-mail address is registered on
+Exec=mate-terminal --hide-menubar -t "holehe" -- cfl-run holehe
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;email;accounts;

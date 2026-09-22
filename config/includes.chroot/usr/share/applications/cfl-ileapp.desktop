@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=iLEAPP
+Comment=iOS logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "iLEAPP" -- cfl-run ileapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

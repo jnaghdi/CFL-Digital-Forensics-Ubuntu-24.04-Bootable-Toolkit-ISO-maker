@@ -1,0 +1,160 @@
+#!/bin/bash
+# CFL Forensics - tools fetched/built from upstream (not in Debian trixie)
+echo "=== [tools] upstream builds ==="
+mkdir -p /var/log/cfl-forensics /opt/tools
+LOG=/var/log/cfl-forensics/third-party-tools.log
+touch "$LOG"
+export DEBIAN_FRONTEND=noninteractive
+
+ok()   { echo "OK   $1" >> "$LOG"; }
+warn() { echo "WARN $1 failed (build continues)" >> "$LOG"; }
+
+# --- JADX (Android decompiler, GitHub release zip) ---
+JURL=$(curl -s https://api.github.com/repos/skylot/jadx/releases/latest \
+       | grep -o 'https://[^"]*jadx-[0-9.]*\.zip' | head -1)
+if [ -n "$JURL" ] && curl -sL --retry 3 -o /tmp/jadx.zip "$JURL" \
+   && unzip -q -o /tmp/jadx.zip -d /opt/jadx \
+   && chmod +x /opt/jadx/bin/jadx /opt/jadx/bin/jadx-gui; then
+    ln -sf /opt/jadx/bin/jadx /usr/local/bin/jadx
+    ln -sf /opt/jadx/bin/jadx-gui /usr/local/bin/jadx-gui
+    ok "jadx ($JURL)"
+else
+    warn "jadx"
+fi
+rm -f /tmp/jadx.zip
+
+# --- Amass (GitHub release, linux amd64 zip) ---
+AURL=$(curl -s https://api.github.com/repos/owasp-amass/amass/releases/latest \
+       | grep -o 'https://[^"]*linux_amd64\.zip' | head -1)
+if [ -n "$AURL" ] && curl -sL --retry 3 -o /tmp/amass.zip "$AURL" \
+   && mkdir -p /opt/tools/amass \
+   && unzip -q -o /tmp/amass.zip -d /opt/tools/amass; then
+    BIN=$(find /opt/tools/amass -name amass -type f | head -1)
+    if [ -n "$BIN" ]; then chmod +x "$BIN"; ln -sf "$BIN" /usr/local/bin/amass; ok "amass ($AURL)"; else warn "amass"; fi
+else
+    warn "amass"
+fi
+rm -f /tmp/amass.zip
+
+# NOTE: radare2/rizin are NOT installed - neither is in Debian trixie, and the
+# upstream Ubuntu-built .deb pulls mismatched libraries (tools died with
+# "Status 255"). The launchers were removed; ghidra + capstone-tool + readpe
+# cover the reverse-engineering workflow.
+
+# --- URLCrazy (typosquat domain generator, single ruby script) ---
+if git clone --depth=1 https://github.com/urbanadventurer/urlcrazy.git /opt/tools/urlcrazy; then
+    cat > /usr/local/bin/urlcrazy <<'EOF'
+#!/bin/bash
+exec ruby /opt/tools/urlcrazy/urlcrazy "$@"
+EOF
+    chmod +x /usr/local/bin/urlcrazy
+    ok "urlcrazy"
+else
+    warn "urlcrazy"
+fi
+
+# --- DidierStevensSuite (pdfid, pdf-parser - single-file python scripts) ---
+if git clone --depth=1 https://github.com/DidierStevens/DidierStevensSuite.git /opt/tools/didierstevens; then
+    cat > /usr/local/bin/pdfid <<'EOF'
+#!/bin/bash
+exec python3 /opt/tools/didierstevens/pdfid.py "$@"
+EOF
+    cat > /usr/local/bin/pdf-parser <<'EOF'
+#!/bin/bash
+exec python3 /opt/tools/didierstevens/pdf-parser.py "$@"
+EOF
+    chmod +x /usr/local/bin/pdfid /usr/local/bin/pdf-parser
+    ok "didierstevens (pdfid, pdf-parser)"
+else
+    warn "didierstevens"
+fi
+
+# --- hashcat-utils (source build) ---
+apt-get install -y --no-install-recommends build-essential >> "$LOG" 2>&1 || true
+if git clone --depth=1 https://github.com/hashcat/hashcat-utils.git /tmp/hashcat-utils \
+   && make -C /tmp/hashcat-utils/src >> "$LOG" 2>&1 \
+   && cp /tmp/hashcat-utils/src/*.bin /usr/local/bin/; then
+    ok "hashcat-utils"
+else
+    warn "hashcat-utils"
+fi
+rm -rf /tmp/hashcat-utils
+
+# --- bulk_extractor (source build, best effort) ---
+apt-get install -y --no-install-recommends autoconf automake libtool \
+    libssl-dev zlib1g-dev libre2-dev flex bison >> "$LOG" 2>&1 || true
+if git clone --depth=1 https://github.com/simsong/bulk_extractor.git /tmp/bulk_extractor \
+   && ( cd /tmp/bulk_extractor && ./bootstrap.sh >> "$LOG" 2>&1 \
+        && ./configure --prefix=/usr/local >> "$LOG" 2>&1 \
+        && make -j2 >> "$LOG" 2>&1 \
+        && make install >> "$LOG" 2>&1 ); then
+    ok "bulk_extractor"
+else
+    warn "bulk_extractor"
+fi
+rm -rf /tmp/bulk_extractor
+
+# --- mdbtools (MS Access reader - not in trixie; source build, best effort) ---
+apt-get install -y --no-install-recommends libglib2.0-dev txt2man >> "$LOG" 2>&1 || true
+MURL=$(curl -s https://api.github.com/repos/mdbtools/mdbtools/releases/latest \
+       | grep -o 'https://[^"]*tar\.gz' | head -1)
+if [ -n "$MURL" ] && curl -sL --retry 3 -o /tmp/mdbtools.tar.gz "$MURL" \
+   && mkdir -p /tmp/mdbtools && tar xzf /tmp/mdbtools.tar.gz -C /tmp/mdbtools --strip-components=1 \
+   && ( cd /tmp/mdbtools && autoreconf -i -f >> "$LOG" 2>&1 \
+        && ./configure --prefix=/usr/local --disable-man >> "$LOG" 2>&1 \
+        && make -j2 >> "$LOG" 2>&1 \
+        && make install >> "$LOG" 2>&1 && ldconfig ); then
+    ok "mdbtools ($MURL)"
+else
+    warn "mdbtools"
+fi
+rm -rf /tmp/mdbtools /tmp/mdbtools.tar.gz
+
+# --- pipal (password pattern analyser) ---
+if git clone --depth=1 https://github.com/digininja/pipal.git /opt/tools/pipal \
+   && chmod +x /opt/tools/pipal/pipal.rb; then
+    ln -sf /opt/tools/pipal/pipal.rb /usr/local/bin/pipal
+    ok "pipal"
+else
+    warn "pipal"
+fi
+
+# --- metagoofil (document metadata OSINT) ---
+if git clone --depth=1 https://github.com/opsdisk/metagoofil.git /opt/tools/metagoofil \
+   && ( cd /opt/tools/metagoofil && pip3 install --break-system-packages -r requirements.txt >> "$LOG" 2>&1 ); then
+    chmod +x /opt/tools/metagoofil/metagoofil.py 2>/dev/null || true
+    ln -sf /opt/tools/metagoofil/metagoofil.py /usr/local/bin/metagoofil
+    ok "metagoofil"
+else
+    warn "metagoofil"
+fi
+
+# --- zsteg (ruby gem) ---
+if gem install zsteg --no-document >> "$LOG" 2>&1; then
+    ok "zsteg"
+else
+    warn "zsteg"
+fi
+
+chmod -R a+rX /opt/tools 2>/dev/null || true
+echo "=== [tools] upstream builds done (see /var/log/cfl-forensics/third-party-tools.log) ==="
+
+# --- assetfinder (subdomain OSINT, Go single binary - not packaged in Ubuntu) ---
+AFURL=$(curl -s https://api.github.com/repos/tomnomnom/assetfinder/releases/latest \
+        | grep -o 'https://[^"]*linux-amd64[^"]*\.tgz' | head -1)
+if [ -n "$AFURL" ] && curl -sL --retry 3 -o /tmp/assetfinder.tgz "$AFURL" \
+   && tar xzf /tmp/assetfinder.tgz -C /usr/local/bin assetfinder 2>/dev/null; then
+    chmod +x /usr/local/bin/assetfinder; ok "assetfinder ($AFURL)"
+else
+    warn "assetfinder"
+fi
+rm -f /tmp/assetfinder.tgz
+
+# --- exiflooter (image geolocation OSINT, pip from GitHub - not in Ubuntu) ---
+if git clone --depth=1 https://github.com/aydinnyunus/exiflooter.git /opt/tools/exiflooter >> "$LOG" 2>&1 \
+   && ( cd /opt/tools/exiflooter && pip3 install --break-system-packages -r requirements.txt >> "$LOG" 2>&1 \
+        && pip3 install --break-system-packages . >> "$LOG" 2>&1 ); then
+    ok "exiflooter"
+else
+    warn "exiflooter"
+fi

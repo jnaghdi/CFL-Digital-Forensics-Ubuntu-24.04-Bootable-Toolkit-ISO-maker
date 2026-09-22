@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bully
+Comment=WPS PIN brute force
+Exec=mate-terminal --hide-menubar -t "bully" -- cfl-run bully
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

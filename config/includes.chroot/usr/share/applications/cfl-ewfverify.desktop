@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ewfverify
+Comment=Verify EWF images
+Exec=mate-terminal --hide-menubar -t "ewfverify" -- cfl-run ewfverify
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=crunch
+Comment=Wordlist generator
+Exec=mate-terminal --hide-menubar -t "crunch" -- cfl-run crunch
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rifiuti2
+Comment=Recycle bin analysis
+Exec=mate-terminal --hide-menubar -t "rifiuti2" -- cfl-run rifiuti2
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

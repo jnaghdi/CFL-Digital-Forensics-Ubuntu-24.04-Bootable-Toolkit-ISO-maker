@@ -1,0 +1,12 @@
+CFL Forensics - hash record for build.sh
+========================================
+file      : build.sh
+size      : 55588 bytes
+modified  : 2026-09-22 11:54:20 UTC
+hashed    : 2026-09-22 11:54:27 UTC
+MD5       : bc082f9d34adfb897b4fda44e13c22f3
+SHA-1     : 5218e005628beb1bf9319d795b42302827a492af
+SHA-256   : dfa8ca274b0e3ee1f328bce9eedd72e8cbf8fa6bfca460fd1d86e0d956cc6eb7
+SHA-512   : 0cd758364b2fc28c17d4b740cfde9873add53da2ea8f9e1a272b06c3e9955483d105c39970752b4a234fe6b1246ea056e4d41a2d26d55cafc74847aa7f821672
+
+verify    : sha256sum build.sh   (compare to SHA-256 above)

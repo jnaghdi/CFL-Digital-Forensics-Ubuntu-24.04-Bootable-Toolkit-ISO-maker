@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GHunt
+Comment=Google account OSINT framework
+Exec=mate-terminal --hide-menubar -t "GHunt" -- cfl-run ghunt
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

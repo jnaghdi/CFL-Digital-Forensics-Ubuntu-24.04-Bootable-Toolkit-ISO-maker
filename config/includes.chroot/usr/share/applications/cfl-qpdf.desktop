@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=qpdf
+Comment=PDF transformation
+Exec=mate-terminal --hide-menubar -t "qpdf" -- cfl-run qpdf
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

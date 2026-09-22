@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=clamscan
+Comment=Antivirus scanner
+Exec=mate-terminal --hide-menubar -t "clamscan" -- cfl-run clamscan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

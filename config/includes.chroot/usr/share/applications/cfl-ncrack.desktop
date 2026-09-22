@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ncrack
+Comment=Network authentication cracking
+Exec=mate-terminal --hide-menubar -t "ncrack" -- cfl-run ncrack
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

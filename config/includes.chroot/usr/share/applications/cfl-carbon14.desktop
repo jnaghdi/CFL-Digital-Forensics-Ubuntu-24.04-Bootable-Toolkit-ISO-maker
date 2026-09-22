@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Carbon14
+Comment=USB and artefact timeline builder
+Exec=mate-terminal --hide-menubar -t "Carbon14" -- cfl-run carbon14
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;

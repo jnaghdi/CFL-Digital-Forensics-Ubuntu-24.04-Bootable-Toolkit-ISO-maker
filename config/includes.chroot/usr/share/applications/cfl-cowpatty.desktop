@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=cowpatty
+Comment=WPA-PSK dictionary attack
+Exec=mate-terminal --hide-menubar -t "cowpatty" -- cfl-run cowpatty
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

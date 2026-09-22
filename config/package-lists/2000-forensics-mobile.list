@@ -1,0 +1,7 @@
+# Mobile device forensics
+libimobiledevice-utils ideviceinstaller ifuse usbmuxd
+libplist-utils ipheth-utils adb fastboot
+mtp-tools
+
+# Android build tooling (CSI parity)
+aapt

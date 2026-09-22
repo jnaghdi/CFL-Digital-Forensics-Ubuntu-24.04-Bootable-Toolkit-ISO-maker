@@ -1,0 +1,146 @@
+#!/bin/bash
+# cfl-image - guided forensic disk imaging wizard (PALADIN Toolbox style).
+#
+# Replicates the Sumuri PALADIN imaging workflow on CFL Forensics:
+#   RAW (dd) images  -> dc3dd with SHA-256 hashing + verification pass
+#   E01 (EWF) images -> ewfacquire (libewf) + ewfverify
+# Every run writes an acquisition log next to the image, with examiner
+# metadata, source/destination hashes and a verification result.
+#
+# Safety: refuses the live system disk, refuses an output directory on the
+# source device, and checks free space before starting.
+
+set -u
+SELF=$(basename "$0")
+
+if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
+    cat <<EOF
+$SELF - guided forensic imaging (PALADIN-style)
+  1. pick a source drive (the live system disk is refused)
+  2. pick an output folder (default: a timestamped folder under /cases)
+  3. choose RAW (dc3dd + SHA-256 + verify) or E01 (ewfacquire + ewfverify)
+  4. enter case/examiner metadata - it lands in the acquisition log
+
+No arguments needed; everything is prompted. Root is required.
+EOF
+    exit 0
+fi
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo "  [cfl-image] must run as root (disk access). Try: sudo $SELF"
+    exit 1
+fi
+
+echo "================================================================"
+echo "   CFL Forensic Imaging - PALADIN-style acquisition wizard"
+echo "================================================================"
+
+# ---- devices the wizard must never touch as a SOURCE --------------------
+sys_src=$(findmnt -n -o SOURCE / 2>/dev/null || true)
+sys_disk=""
+[ -n "$sys_src" ] && sys_disk=$(lsblk -n -o PKNAME "$sys_src" 2>/dev/null | head -1)
+
+echo
+echo "  Candidate source drives:"
+lsblk -dpno NAME,SIZE,MODEL,TRAN 2>/dev/null | grep -v 'loop' | while read -r n s m t; do
+    tag=""
+    [ "/dev/$sys_disk" = "$n" ] && tag="   <-- LIVE SYSTEM DISK (refused)"
+    printf '    %-12s %-9s %-28s %-6s%s\n' "$n" "$s" "${m:-unknown}" "${t:-?}" "$tag"
+done
+echo
+read -r -p "  Source device (e.g. /dev/sdb): " SRC
+[ -b "$SRC" ] || { echo "  [abort] '$SRC' is not a block device."; exit 1; }
+[ "/dev/$sys_disk" = "$SRC" ] && { echo "  [abort] '$SRC' hosts the running system - refusing to image it."; exit 1; }
+
+SRC_SIZE=$(blockdev --getsize64 "$SRC" 2>/dev/null || echo 0)
+echo "  Source size: $((SRC_SIZE / 1024 / 1024)) MiB"
+
+# ---- output folder -------------------------------------------------------
+STAMP=$(date +%Y%m%d-%H%M%S)
+read -r -p "  Output folder [/cases/IMAGING-$STAMP]: " OUTDIR
+OUTDIR=${OUTDIR:-/cases/IMAGING-$STAMP}
+mkdir -p "$OUTDIR" || { echo "  [abort] cannot create $OUTDIR"; exit 1; }
+
+out_dev=$(df --output=source "$OUTDIR" 2>/dev/null | tail -1)
+out_disk=$(lsblk -n -o PKNAME "$out_dev" 2>/dev/null | head -1)
+if [ -n "$out_disk" ] && [ "/dev/$out_disk" = "$SRC" ]; then
+    echo "  [abort] output folder is on the SOURCE device - image the drive to itself?"
+    exit 1
+fi
+
+FREE=$(df -B1 --output=avail "$OUTDIR" | tail -1 | tr -d ' ')
+if [ "$SRC_SIZE" -gt 0 ] && [ "$FREE" -lt "$SRC_SIZE" ]; then
+    echo "  [warn] free space ($((FREE/1024/1024)) MiB) < source size ($((SRC_SIZE/1024/1024)) MiB)."
+    read -r -p "  Continue anyway? [y/N]: " c; [ "${c:-N}" = "y" ] || exit 1
+fi
+
+# ---- case metadata -------------------------------------------------------
+read -r -p "  Case number   [CFL-$STAMP]: " CASE;   CASE=${CASE:-CFL-$STAMP}
+read -r -p "  Examiner      [$(id -un)]: " EXAM;      EXAM=${EXAM:-$(id -un)}
+read -r -p "  Evidence no.  [ITEM-1]: "   EVID;     EVID=${EVID:-ITEM-1}
+read -r -p "  Description   []: "         DESC
+LOG="$OUTDIR/$CASE-acquisition.log"
+
+echo
+echo "  Output format:"
+echo "    1) RAW (dd) - dc3dd, SHA-256, split-free, verify pass   [PALADIN default]"
+echo "    2) E01 (EWF) - ewfacquire (libewf), compressed metadata, ewfverify"
+read -r -p "  Choose [1]: " FMT; FMT=${FMT:-1}
+
+{
+echo "CFL Forensic Imaging log"
+echo "date        : $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+echo "tool        : $SELF (dc3dd / libewf engine)"
+echo "case        : $CASE"
+echo "examiner    : $EXAM"
+echo "evidence    : $EVID"
+echo "description : $DESC"
+echo "source      : $SRC ($((SRC_SIZE/1024/1024)) MiB)"
+echo "output dir  : $OUTDIR"
+echo "----------------------------------------------------------------"
+} > "$LOG"
+
+case "$FMT" in
+1)
+    IMG="$OUTDIR/$CASE-$EVID.dd"
+    echo "  >> acquiring RAW image with dc3dd (SHA-256)..."
+    dc3dd if="$SRC" hof="$IMG" hash=sha256 log="$LOG.dc3dd" verb=on \
+        && cat "$LOG.dc3dd" >> "$LOG"
+    rc=$?
+    if [ "$rc" -eq 0 ]; then
+        echo "  >> verifying image against source..."
+        dc3dd if="$IMG" vf="$SRC" hash=sha256 log="$LOG.verify" verb=on \
+            && cat "$LOG.verify" >> "$LOG"
+        rc=$?
+    fi
+    ;;
+2)
+    IMG="$OUTDIR/$CASE-$EVID"
+    echo "  >> acquiring E01 image with ewfacquire..."
+    ewf_args=(-t "$IMG" -C "$CASE" -E "$EXAM" -e "$EVID" -f encase7 -c fast)
+    [ -n "$DESC" ] && ewf_args+=(-D "$DESC")
+    ewfacquire "${ewf_args[@]}" "$SRC" 2>&1 | tee -a "$LOG"
+    rc=${PIPESTATUS[0]}
+    IMG="$IMG.E01"
+    if [ "$rc" -eq 0 ]; then
+        echo "  >> verifying with ewfverify..."
+        ewfverify -l "$LOG.ewfverify" "$IMG" && cat "$LOG.ewfverify" >> "$LOG"
+        rc=$?
+    fi
+    ;;
+*)
+    echo "  [abort] unknown choice."; exit 1;;
+esac
+
+echo "result      : $([ "$rc" -eq 0 ] && echo SUCCESS || echo FAILED) " >> "$LOG"
+echo
+if [ "$rc" -eq 0 ]; then
+    echo "================================================================"
+    echo "  ACQUISITION COMPLETE"
+    echo "    image : $IMG"
+    echo "    log   : $LOG"
+    echo "================================================================"
+else
+    echo "  [FAILED] acquisition or verification failed - see $LOG"
+fi
+exit "$rc"

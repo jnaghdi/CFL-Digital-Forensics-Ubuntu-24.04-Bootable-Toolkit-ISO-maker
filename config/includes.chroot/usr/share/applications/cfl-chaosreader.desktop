@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=chaosreader
+Comment=Session reconstruction from pcaps
+Exec=mate-terminal --hide-menubar -t "chaosreader" -- cfl-run chaosreader
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

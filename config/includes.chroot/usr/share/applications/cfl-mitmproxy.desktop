@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mitmproxy
+Comment=HTTPS interception proxy
+Exec=mate-terminal --hide-menubar -t "mitmproxy" -- cfl-run mitmproxy
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

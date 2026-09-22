@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=onesixtyone
+Comment=SNMP scanner
+Exec=mate-terminal --hide-menubar -t "onesixtyone" -- cfl-run onesixtyone
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

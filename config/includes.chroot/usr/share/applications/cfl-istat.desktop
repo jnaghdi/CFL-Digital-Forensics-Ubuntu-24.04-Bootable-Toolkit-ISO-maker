@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=istat
+Comment=Inode details (TSK)
+Exec=mate-terminal --hide-menubar -t "istat" -- cfl-run istat
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

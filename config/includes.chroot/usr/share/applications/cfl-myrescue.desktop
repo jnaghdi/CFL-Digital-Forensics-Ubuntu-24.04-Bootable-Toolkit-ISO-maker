@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=myrescue
+Comment=Rescue still-readable data from damaged disks
+Exec=mate-terminal --hide-menubar -t "myrescue" -- cfl-run myrescue
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

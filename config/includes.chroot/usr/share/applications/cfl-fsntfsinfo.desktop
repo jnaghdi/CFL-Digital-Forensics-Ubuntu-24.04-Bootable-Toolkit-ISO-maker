@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fsntfsinfo
+Comment=NTFS information
+Exec=mate-terminal --hide-menubar -t "fsntfsinfo" -- cfl-run fsntfsinfo
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

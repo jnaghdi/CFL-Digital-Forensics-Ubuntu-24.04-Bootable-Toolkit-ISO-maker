@@ -1,0 +1,16 @@
+# Acquisition, imaging & write-blocking
+guymager xmount afflib-tools ewf-tools
+guestfish
+dc3dd dcfldd gddrescue safecopy
+myrescue ddrutility dares recoverdm
+xva-img ddrescueview partclone kpartx
+mtd-utils libguestfs-tools qemu-utils hdparm
+sdparm nvme-cli smartmontools dmsetup
+lvm2 mdadm cryptsetup tableau-parm
+testdisk
+
+# Vehicle / CAN-bus forensics (CSI parity)
+can-utils
+
+# Automotive / 1-wire acquisition (Kali & Parrot parity)
+scantool ow-shell ow-tools

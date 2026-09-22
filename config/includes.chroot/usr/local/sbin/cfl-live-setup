@@ -1,0 +1,47 @@
+#!/bin/sh
+# CFL Forensics - live-session-only setup. Guarded by cfl-live.service's
+# ConditionKernelCommandLine=boot=casper, so it never runs on an installed
+# system. Safe to re-run.
+set -e
+
+# 1) Passwordless sudo for the live user (casper also drops its own file, but
+#    make it explicit and independent of the casper username).
+LIVE_USER="cfl"
+if id "$LIVE_USER" >/dev/null 2>&1; then
+    printf '%s ALL=(ALL) NOPASSWD: ALL\n' "$LIVE_USER" > /etc/sudoers.d/cfl-live
+    chmod 0440 /etc/sudoers.d/cfl-live
+fi
+
+# 2) Runtime polkit rule: let the live user run pkexec GUI tools and manage
+#    NetworkManager/udisks without a password prompt. Written to /run so it
+#    exists only while live and never lands on an installed disk.
+mkdir -p /run/polkit-1/rules.d
+cat > /run/polkit-1/rules.d/49-cfl-live.rules <<'RULES'
+// CFL Forensics live session: no password prompts for the live examiner.
+polkit.addRule(function(action, subject) {
+    if (subject.user == "cfl") {
+        return polkit.Result.YES;
+    }
+});
+RULES
+# some builds read rules only from /etc; drop a copy there too (removed on install)
+cp /run/polkit-1/rules.d/49-cfl-live.rules /etc/polkit-1/rules.d/49-cfl-live.rules 2>/dev/null || true
+
+# 3) Forensic write-blocking default. The live medium is always treated as
+#    a read-only examination environment: unless the user asked to skip it,
+#    turn on the udev read-only rule so any *newly attached* disk is blocked.
+#    'cfl-forensic-mode=off' opts out; plain 'cfl-forensic-mode' or
+#    'cfl-forensic-mode=on' opts in (the default here is ON).
+MODE=on
+for arg in $(cat /proc/cmdline); do
+    case "$arg" in
+        cfl-forensic-mode=off) MODE=off ;;
+        cfl-forensic-mode=on)  MODE=on ;;
+        cfl-forensic-mode)     MODE=on ;;
+    esac
+done
+if [ "$MODE" = "on" ] && [ -x /usr/local/bin/forensics-mode ]; then
+    /usr/local/bin/forensics-mode on || true
+fi
+
+exit 0

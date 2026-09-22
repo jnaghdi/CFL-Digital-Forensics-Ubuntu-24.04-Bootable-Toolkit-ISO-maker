@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pdf-parser
+Comment=Inspect PDF internals, objects and streams
+Exec=mate-terminal --hide-menubar -t "pdf-parser" -- cfl-run pdf-parser
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;

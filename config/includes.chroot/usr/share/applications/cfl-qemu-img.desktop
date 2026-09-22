@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=qemu-img
+Comment=QEMU image format tool
+Exec=mate-terminal --hide-menubar -t "qemu-img" -- cfl-run qemu-img
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

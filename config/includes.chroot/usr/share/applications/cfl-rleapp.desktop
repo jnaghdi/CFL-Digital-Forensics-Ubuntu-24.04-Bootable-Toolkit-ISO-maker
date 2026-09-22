@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RLEAPP
+Comment=App/returns logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "RLEAPP" -- cfl-run rleapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

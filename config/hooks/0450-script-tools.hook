@@ -1,0 +1,118 @@
+#!/bin/bash
+# CFL Forensics - script-based forensics/OSINT tools (git clone + venv + wrapper)
+# Pattern: clone to /opt/tools/<dir>, install requirements into an isolated
+# venv, drop a wrapper in /usr/local/bin. Every step is best effort:
+# failures are logged to /var/log/cfl-forensics/third-party-tools.log and the
+# 0600 menu hook prunes any launcher whose binary never landed.
+echo "=== [tools] script-based tools ==="
+mkdir -p /var/log/cfl-forensics /opt/tools
+LOG=/var/log/cfl-forensics/third-party-tools.log
+touch "$LOG"
+
+ok()   { echo "OK   $1" >> "$LOG"; }
+warn() { echo "WARN $1 failed (build continues)" >> "$LOG"; }
+
+# gitpy <git-url> <dir-name> <entry-script> <command> [--ssp]
+#   --ssp : create the venv with --system-site-packages (for tools that need
+#           apt-provided modules such as python3-parted)
+#
+# Hardened: requirements are installed twice if needed (pinned first, then
+# with '==version' pins stripped - old pins often fail on new Python), the
+# finished wrapper is smoke-tested, and a tool that cannot run gets NO
+# wrapper at all (the launcher is then pruned by hook 0700) instead of a
+# broken one that dies with ModuleNotFoundError when clicked.
+gitpy() {
+    local url="$1" dir="/opt/tools/$2" entry="$3" cmd="$4" ssp="$5"
+    local vargs="" pybin
+    [ "$ssp" = "--ssp" ] && vargs="--system-site-packages"
+    if ! git clone --depth=1 "$url" "$dir" >> "$LOG" 2>&1; then
+        warn "$cmd (clone failed - no network?)"
+        return 0
+    fi
+    if [ ! -f "$dir/$entry" ]; then
+        warn "$cmd (entry $entry not found)"
+        return 0
+    fi
+    if [ -f "$dir/requirements.txt" ]; then
+        if ! python3 -m venv $vargs "$dir/venv" >> "$LOG" 2>&1; then
+            warn "$cmd (venv creation failed)"
+            return 0
+        fi
+        "$dir/venv/bin/pip" install --quiet --upgrade pip >> "$LOG" 2>&1 || true
+        if ! "$dir/venv/bin/pip" install --quiet -r "$dir/requirements.txt" >> "$LOG" 2>&1; then
+            echo "INFO $cmd: pinned requirements failed, retrying with pins stripped" >> "$LOG"
+            sed 's/==[A-Za-z0-9._-]*//g' "$dir/requirements.txt" > "$dir/requirements.unpinned.txt"
+            if ! "$dir/venv/bin/pip" install --quiet -r "$dir/requirements.unpinned.txt" >> "$LOG" 2>&1; then
+                warn "$cmd (pip install failed even unpinned)"
+                return 0
+            fi
+        fi
+        pybin="$dir/venv/bin/python"
+    else
+        pybin=/usr/bin/python3
+    fi
+    printf '#!/bin/sh\nexec %s "%s/%s" "$@"\n' "$pybin" "$dir" "$entry" > "/usr/local/bin/$cmd"
+    chmod +x "/usr/local/bin/$cmd"
+    # smoke test: --help must not die with an import error / missing module
+    local out rc
+    out=$(timeout 30 "/usr/local/bin/$cmd" --help </dev/null 2>&1); rc=$?
+    if [ "$rc" -ge 126 ] || echo "$out" | grep -qE 'ModuleNotFoundError|ImportError|No module named|bad interpreter'; then
+        echo "$out" | head -5 >> "$LOG"
+        rm -f "/usr/local/bin/$cmd"
+        warn "$cmd (smoke test failed, rc=$rc - wrapper removed)"
+        return 0
+    fi
+    ok "$cmd ($url)"
+}
+
+# --- xLEAPP family (abrignoni, MIT) - mobile/app artefact parsers ---
+gitpy https://github.com/abrignoni/iLEAPP.git iLEAPP ileapp.py ileapp
+gitpy https://github.com/abrignoni/ALEAPP.git ALEAPP aleapp.py aleapp
+gitpy https://github.com/abrignoni/RLEAPP.git RLEAPP rleapp.py rleapp
+gitpy https://github.com/abrignoni/VLEAPP.git VLEAPP vleapp.py vleapp
+gitpy https://github.com/abrignoni/WLEAPP.git WLEAPP wleapp.py wleapp
+gitpy https://github.com/abrignoni/cLEAPP.git cLEAPP cleapp.py cleapp
+
+# --- OSINT scripts ---
+gitpy https://github.com/s0md3v/Photon.git Photon photon.py photon
+gitpy https://github.com/p1ngul1n0/blackbird.git blackbird blackbird.py blackbird
+gitpy https://github.com/martinvigo/email2phonenumber.git email2phonenumber email2phonenumber.py email2phonenumber
+
+# --- Disk / timeline helpers ---
+# RecuperaBit needs pyparted (apt: python3-parted) - hence the shared venv
+gitpy https://github.com/Lazza/RecuperaBit.git RecuperaBit main.py recuperabit --ssp
+# autotimeliner drives the system plaso installation
+gitpy https://github.com/andreafortuna/autotimeliner.git autotimeliner autotimeliner.py autotimeliner
+# Carbon14 (USB & artefact timeline; optional pytsk3 dependency)
+gitpy https://github.com/Lazza/Carbon14.git Carbon14 C14.py carbon14
+# DumpsterDiver (secret/credential finder in file trees)
+gitpy https://github.com/securing/DumpsterDiver.git DumpsterDiver DumpsterDiver.py dumpsterdiver
+
+# --- urlcrazy (typosquatting OSINT, Ruby - no venv needed) ---
+if git clone --depth=1 https://github.com/urbanadventurer/urlcrazy.git /opt/tools/urlcrazy >> "$LOG" 2>&1 \
+   && [ -f /opt/tools/urlcrazy/urlcrazy ]; then
+    printf '#!/bin/sh\nexec ruby /opt/tools/urlcrazy/urlcrazy "$@"\n' > /usr/local/bin/urlcrazy
+    chmod +x /usr/local/bin/urlcrazy
+    ok "urlcrazy"
+else
+    warn "urlcrazy"
+fi
+
+# --- pdfid / pdf-parser (DidierStevensSuite, PDF structure analysis) ---
+if git clone --depth=1 https://github.com/DidierStevens/DidierStevensSuite.git /opt/tools/didierstevens >> "$LOG" 2>&1; then
+    linked=0
+    for t in pdfid.py pdf-parser.py; do
+        cmd=$(basename "$t" .py)
+        if [ -f "/opt/tools/didierstevens/$t" ]; then
+            printf '#!/bin/sh\nexec python3 /opt/tools/didierstevens/%s "$@"\n' "$t" > "/usr/local/bin/$cmd"
+            chmod +x "/usr/local/bin/$cmd"
+            linked=1
+        fi
+    done
+    [ "$linked" -eq 1 ] && ok "pdfid + pdf-parser" || warn "pdfid/pdf-parser (entries missing)"
+else
+    warn "pdfid/pdf-parser (clone)"
+fi
+
+chmod -R a+rX /opt/tools 2>/dev/null || true
+echo "=== [tools] script-based tools done (see $LOG) ==="

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=p0f
+Comment=Passive OS fingerprinting
+Exec=mate-terminal --hide-menubar -t "p0f" -- cfl-run p0f
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

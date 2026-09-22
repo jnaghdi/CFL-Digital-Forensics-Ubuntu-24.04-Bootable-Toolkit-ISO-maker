@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Gobuster
+Comment=Directory, file, DNS and vhost brute-forcing
+Exec=mate-terminal --hide-menubar -t "Gobuster" -- cfl-run gobuster
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

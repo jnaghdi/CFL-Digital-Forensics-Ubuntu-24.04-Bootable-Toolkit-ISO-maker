@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dnsenum
+Comment=DNS enumeration
+Exec=mate-terminal --hide-menubar -t "dnsenum" -- cfl-run dnsenum
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

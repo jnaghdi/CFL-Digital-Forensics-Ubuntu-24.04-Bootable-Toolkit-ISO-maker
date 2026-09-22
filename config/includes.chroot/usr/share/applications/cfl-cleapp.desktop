@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=cLEAPP
+Comment=ChromeOS logs, events and properties parser
+Exec=mate-terminal --hide-menubar -t "cLEAPP" -- cfl-run cleapp
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Mobile;
+Keywords=forensics;

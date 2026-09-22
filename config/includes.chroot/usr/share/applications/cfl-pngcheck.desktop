@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pngcheck
+Comment=PNG integrity verification
+Exec=mate-terminal --hide-menubar -t "pngcheck" -- cfl-run pngcheck
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

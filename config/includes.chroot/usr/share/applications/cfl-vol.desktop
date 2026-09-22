@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Volatility 3
+Comment=Memory forensics framework
+Exec=mate-terminal --hide-menubar -t "Volatility 3" -- cfl-run vol
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

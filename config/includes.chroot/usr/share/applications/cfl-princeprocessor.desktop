@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=princeprocessor
+Comment=PRINCE attack
+Exec=mate-terminal --hide-menubar -t "princeprocessor" -- cfl-run princeprocessor
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

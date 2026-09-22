@@ -1,0 +1,11 @@
+# OSINT & reconnaissance (more via hook)
+ dmitry dnsrecon dnsenum
+fierce sublist3r  altdns
+ sherlock whatweb ssh-audit
+lynis 
+
+# Anonymity, mirroring & subdomain OSINT (CSI parity)
+knockpy cutycapt httrack tor obfs4proxy i2pd macchanger
+
+# Web recon & social-media OSINT (Kali & Parrot parity)
+gobuster python3-shodan instaloader wafw00f

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=vshadowmount
+Comment=Mount VSS snapshots
+Exec=mate-terminal --hide-menubar -t "vshadowmount" -- cfl-run vshadowmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

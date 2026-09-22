@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=evtx_dump
+Comment=EVTX log parser
+Exec=mate-terminal --hide-menubar -t "evtx_dump" -- cfl-run evtx_dump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

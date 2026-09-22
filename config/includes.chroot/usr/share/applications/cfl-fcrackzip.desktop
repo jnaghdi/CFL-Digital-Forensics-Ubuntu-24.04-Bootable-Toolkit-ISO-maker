@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fcrackzip
+Comment=ZIP password cracker
+Exec=mate-terminal --hide-menubar -t "fcrackzip" -- cfl-run fcrackzip
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

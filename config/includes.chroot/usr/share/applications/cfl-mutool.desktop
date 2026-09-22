@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mutool
+Comment=MuPDF tools
+Exec=mate-terminal --hide-menubar -t "mutool" -- cfl-run mutool
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

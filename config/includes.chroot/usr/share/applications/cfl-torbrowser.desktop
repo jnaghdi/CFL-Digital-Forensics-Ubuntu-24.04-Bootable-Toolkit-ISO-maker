@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Tor Browser
+Comment=Anonymous browsing via the Tor network (downloads the official bundle on first run)
+Exec=torbrowser-launcher
+Icon=cfl-logo
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;tor;anonymity;browser;

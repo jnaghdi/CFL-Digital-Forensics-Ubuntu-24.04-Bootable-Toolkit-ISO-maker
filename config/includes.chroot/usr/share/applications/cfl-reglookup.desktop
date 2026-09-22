@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=reglookup
+Comment=Registry hive reader
+Exec=mate-terminal --hide-menubar -t "reglookup" -- cfl-run reglookup
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

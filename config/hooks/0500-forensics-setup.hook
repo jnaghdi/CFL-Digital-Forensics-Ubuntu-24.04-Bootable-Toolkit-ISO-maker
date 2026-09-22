@@ -1,0 +1,41 @@
+#!/bin/bash
+# CFL Forensics - workstation layout, defaults and housekeeping (Ubuntu)
+set -e
+echo "=== [setup] forensic workstation setup ==="
+
+# Case workspace and evidence mountpoints
+mkdir -p /cases /evidence /mnt/target /opt/tools
+chmod 755 /cases /evidence /mnt/target
+
+# Compile the dconf system database (defaults in /etc/dconf/db/local.d/)
+dconf update || true
+
+# Default shell for newly created users -> zsh (macOS-style); skel has a bash fallback
+sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd || true
+
+# Login banner
+cat > /etc/motd <<'MOTD'
+
+  CFL Forensics - Digital Forensics Workstation
+  Base: Ubuntu 24.04 LTS (noble) | Desktop: GNOME + WhiteSur (macOS style)
+  ------------------------------------------------------------------
+  Evidence safety:
+    sudo forensics-mode on     treat all newly attached drives as read-only
+    evidence-mount /dev/sdX1   mount a device read-only under /evidence/
+  Tool inventory:  cfl-tools [keyword]
+  Case workspace:  /cases      Evidence mounts: /evidence
+  Install to disk: click "Install CFL Forensics" (dual-boot alongside Windows)
+  ------------------------------------------------------------------
+
+MOTD
+
+# Soft theme sanity check - the theme hook is best-effort, so a missing theme
+# must not fail the build (GNOME falls back to Adwaita/Yaru).
+if [ ! -d /usr/share/themes/WhiteSur-Dark/gtk-3.0 ]; then
+    echo "WARN [setup] WhiteSur-Dark GTK theme missing - desktop falls back to the default theme"
+fi
+if [ ! -d /usr/share/icons/WhiteSur-dark ]; then
+    echo "WARN [setup] WhiteSur-dark icons missing - GNOME falls back to Yaru/Adwaita"
+fi
+
+echo "=== [setup] done ==="

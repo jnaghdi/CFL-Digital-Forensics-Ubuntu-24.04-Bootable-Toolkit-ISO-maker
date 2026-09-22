@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Maryam
+Comment=Modular OSINT data-collection framework
+Exec=mate-terminal --hide-menubar -t "Maryam" -- cfl-run maryam
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;

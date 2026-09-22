@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mitmweb
+Comment=mitmproxy web interface
+Exec=mate-terminal --hide-menubar -t "mitmweb" -- cfl-run mitmweb
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

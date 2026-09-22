@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=guestmount
+Comment=Mount a VM disk image read-only via libguestfs
+Exec=mate-terminal --hide-menubar -t "guestmount" -- cfl-run guestmount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;vm;mount;qcow2;vmdk;

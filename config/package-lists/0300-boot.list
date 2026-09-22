@@ -1,0 +1,15 @@
+#!no-recommends
+# Live boot + Secure-Boot dual-boot chain
+casper
+plymouth plymouth-theme-spinner plymouth-label
+# Boot chain (BIOS + Secure-Boot UEFI). IMPORTANT: use the grub-efi-amd64 META
+# (not grub-pc) to satisfy grub-efi-amd64-signed's "grub-efi-amd64 | grub-pc"
+# dependency - grub-pc *conflicts* with grub-efi-amd64 and would make apt drop
+# grub-efi-amd64-signed and shim-signed. grub-pc-bin (BIOS modules for the El
+# Torito image) coexists fine with grub-efi-amd64.
+grub-pc-bin grub-efi-amd64-bin grub-efi-amd64 grub-efi-amd64-signed shim-signed sbsigntool
+mokutil efibootmgr os-prober memtest86+
+# initramfs + resolved + firmware-update plumbing
+initramfs-tools systemd-resolved
+# filesystem helpers required by casper/Calamares at install time
+squashfs-tools ntfs-3g dosfstools mtools

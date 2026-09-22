@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=xls2csv
+Comment=Excel to CSV
+Exec=mate-terminal --hide-menubar -t "xls2csv" -- cfl-run xls2csv
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

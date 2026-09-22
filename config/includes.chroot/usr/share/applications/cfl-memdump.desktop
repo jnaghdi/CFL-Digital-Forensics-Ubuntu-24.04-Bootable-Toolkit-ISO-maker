@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=memdump
+Comment=Dump physical memory
+Exec=mate-terminal --hide-menubar -t "memdump" -- cfl-run memdump
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

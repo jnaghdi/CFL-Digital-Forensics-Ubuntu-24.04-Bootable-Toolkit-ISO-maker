@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=usbrip
+Comment=USB device history
+Exec=mate-terminal --hide-menubar -t "usbrip" -- cfl-run usbrip
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

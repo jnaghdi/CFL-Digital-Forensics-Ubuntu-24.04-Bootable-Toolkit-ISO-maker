@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=fvdemount
+Comment=Mount FileVault volumes
+Exec=mate-terminal --hide-menubar -t "fvdemount" -- cfl-run fvdemount
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

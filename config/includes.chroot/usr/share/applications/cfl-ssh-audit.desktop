@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ssh-audit
+Comment=SSH server auditing
+Exec=mate-terminal --hide-menubar -t "ssh-audit" -- cfl-run ssh-audit
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

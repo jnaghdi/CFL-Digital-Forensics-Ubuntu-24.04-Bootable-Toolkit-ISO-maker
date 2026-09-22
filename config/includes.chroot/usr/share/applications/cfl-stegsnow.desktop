@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=stegsnow
+Comment=Whitespace steganography
+Exec=mate-terminal --hide-menubar -t "stegsnow" -- cfl-run stegsnow
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

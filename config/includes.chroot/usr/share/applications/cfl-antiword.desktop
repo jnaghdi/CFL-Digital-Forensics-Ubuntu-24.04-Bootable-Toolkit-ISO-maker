@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=antiword
+Comment=Word document reader
+Exec=mate-terminal --hide-menubar -t "antiword" -- cfl-run antiword
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

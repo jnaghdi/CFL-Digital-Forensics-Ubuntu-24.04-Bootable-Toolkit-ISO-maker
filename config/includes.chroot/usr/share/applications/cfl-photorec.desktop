@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=photorec
+Comment=File carving and recovery
+Exec=mate-terminal --hide-menubar -t "photorec" -- cfl-run photorec
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

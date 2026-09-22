@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=volshell
+Comment=Volatility 3 interactive shell
+Exec=mate-terminal --hide-menubar -t "volshell" -- cfl-run volshell
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Memory;
+Keywords=forensics;memory;

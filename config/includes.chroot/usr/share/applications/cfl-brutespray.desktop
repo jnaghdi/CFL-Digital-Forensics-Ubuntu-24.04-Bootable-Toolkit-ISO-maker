@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=brutespray
+Comment=Service brute forcing
+Exec=mate-terminal --hide-menubar -t "brutespray" -- cfl-run brutespray
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tsk_recover
+Comment=Recover files from an image (TSK)
+Exec=mate-terminal --hide-menubar -t "tsk_recover" -- cfl-run tsk_recover
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mac-robber
+Comment=Collect MAC times from live systems
+Exec=mate-terminal --hide-menubar -t "mac-robber" -- cfl-run mac-robber
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

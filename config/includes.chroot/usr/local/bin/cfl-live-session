@@ -1,0 +1,23 @@
+#!/bin/sh
+# Runs once per live GNOME session (autostart). No effect on an installed
+# system: the autostart file is removed by the Calamares finish script.
+
+# Only in the live environment
+[ -d /cdrom/casper ] || [ -d /run/live/medium ] || grep -qw boot=casper /proc/cmdline || exit 0
+
+# Let root-owned GUI tools launched via pkexec talk to the user's X server.
+if command -v xhost >/dev/null 2>&1; then
+    xhost +SI:localuser:root >/dev/null 2>&1 || true
+fi
+
+# Mark the desktop installer icon trusted so GNOME launches it without the
+# "Untrusted application launcher" warning.
+ICON="$HOME/Desktop/install-cfl-forensics.desktop"
+if [ -f "$ICON" ]; then
+    if command -v gio >/dev/null 2>&1; then
+        gio set "$ICON" metadata::trusted true 2>/dev/null || true
+    fi
+    chmod +x "$ICON" 2>/dev/null || true
+fi
+
+exit 0

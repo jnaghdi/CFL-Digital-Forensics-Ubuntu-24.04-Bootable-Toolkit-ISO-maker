@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=log2timeline (plaso)
+Comment=Super timeline creation
+Exec=mate-terminal --hide-menubar -t "log2timeline (plaso)" -- cfl-run log2timeline.py
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Timeline;
+Keywords=forensics;timeline;

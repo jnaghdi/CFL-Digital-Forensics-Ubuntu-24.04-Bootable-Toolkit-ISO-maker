@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=scrub
+Comment=Disk scrubbing
+Exec=mate-terminal --hide-menubar -t "scrub" -- cfl-run scrub
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Wipe;
+Keywords=forensics;wipe;

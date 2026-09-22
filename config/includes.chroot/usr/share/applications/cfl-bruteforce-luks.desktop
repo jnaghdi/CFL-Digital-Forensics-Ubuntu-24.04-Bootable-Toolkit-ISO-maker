@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bruteforce-luks
+Comment=LUKS password recovery
+Exec=mate-terminal --hide-menubar -t "bruteforce-luks" -- cfl-run bruteforce-luks
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

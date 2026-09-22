@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sublist3r
+Comment=Subdomain enumeration
+Exec=mate-terminal --hide-menubar -t "sublist3r" -- cfl-run sublist3r
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

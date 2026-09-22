@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=docx2txt
+Comment=DOCX text extraction
+Exec=mate-terminal --hide-menubar -t "docx2txt" -- cfl-run docx2txt
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

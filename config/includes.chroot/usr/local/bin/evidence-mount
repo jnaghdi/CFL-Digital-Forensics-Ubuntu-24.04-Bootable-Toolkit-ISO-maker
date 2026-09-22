@@ -1,0 +1,21 @@
+#!/bin/bash
+# Mount a device (or image file) strictly read-only for examination.
+set -e
+if [ $# -lt 1 ]; then
+    echo "usage: evidence-mount <device|image> [mountpoint]"
+    echo "  e.g.: evidence-mount /dev/sdb1"
+    echo "        evidence-mount /cases/001/disk.dd /evidence/dd1"
+    exit 1
+fi
+DEV="$1"
+BASE=$(basename "$DEV" | tr -cd '[:alnum:]_.-')
+MP="${2:-/evidence/$BASE}"
+mkdir -p "$MP"
+OPTS="ro,noexec,nodev,nosuid,noatime"
+if [ -f "$DEV" ]; then
+    mount -o "loop,$OPTS" "$DEV" "$MP"
+else
+    mount -o "$OPTS" "$DEV" "$MP"
+fi
+echo "Mounted $DEV read-only at $MP"
+echo "Verify with: findmnt $MP"

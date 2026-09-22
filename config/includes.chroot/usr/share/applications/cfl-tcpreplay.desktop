@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tcpreplay
+Comment=Replay captured traffic onto a network
+Exec=mate-terminal --hide-menubar -t "tcpreplay" -- cfl-run tcpreplay
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;

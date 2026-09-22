@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=xfs_db
+Comment=XFS filesystem debugger
+Exec=mate-terminal --hide-menubar -t "xfs_db" -- cfl-run xfs_db
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-FileSystems;
+Keywords=forensics;filesystems;

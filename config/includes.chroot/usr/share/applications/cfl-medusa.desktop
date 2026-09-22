@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=medusa
+Comment=Parallel login brute force
+Exec=mate-terminal --hide-menubar -t "medusa" -- cfl-run medusa
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Passwords;
+Keywords=forensics;passwords;

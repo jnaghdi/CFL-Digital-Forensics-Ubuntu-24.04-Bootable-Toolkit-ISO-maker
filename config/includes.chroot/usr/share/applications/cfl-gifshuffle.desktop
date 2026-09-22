@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=gifshuffle
+Comment=GIF steganography
+Exec=mate-terminal --hide-menubar -t "gifshuffle" -- cfl-run gifshuffle
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Stego;
+Keywords=forensics;stego;

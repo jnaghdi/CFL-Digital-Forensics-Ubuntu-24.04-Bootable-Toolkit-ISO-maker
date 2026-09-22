@@ -1,0 +1,57 @@
+#!/bin/bash
+# CFL Forensics - organise the applications menu (Forensic Tools / OSINT Tools)
+set -e
+echo "=== [menu] organising forensic tool menus ==="
+APPS=/usr/share/applications
+
+# Move existing GUI applications into the forensic menu tree as well.
+# Patterns are globs so reverse-DNS desktop files (org.keepassxc.*,
+# org.audacityteam.*, com.giuspen.*, ...) cannot silently slip through.
+add_cat() {
+    local pat="$1" cat="$2" f
+    for f in "$APPS"/$pat.desktop; do
+        [ -e "$f" ] || continue
+        desktop-file-edit --add-category="$cat" "$f" 2>/dev/null || true
+    done
+}
+add_cat "wireshark*"            X-CFL-Network
+add_cat "autopsy*"              X-CFL-FileSystems
+add_cat "guymager*"             X-CFL-Acquisition
+add_cat "ophcrack*"             X-CFL-Passwords
+add_cat "bleachbit*"            X-CFL-Wipe
+add_cat "sqlitebrowser*"        X-CFL-Timeline
+add_cat "ghex*"                 X-CFL-MalwareRE
+add_cat "okteta*"               X-CFL-MalwareRE
+add_cat "wxhexeditor*"          X-CFL-MalwareRE
+# CSI-parity GUI applications (plain + reverse-DNS names)
+add_cat "cherrytree*"           X-CFL-Docs
+add_cat "com.giuspen.cherrytree*" X-CFL-Docs
+add_cat "keepassxc*"            X-CFL-Docs
+add_cat "org.keepassxc.*"       X-CFL-Docs
+add_cat "audacity*"             X-CFL-Docs
+add_cat "org.audacityteam.*"    X-CFL-Docs
+add_cat "vokoscreen*"           X-CFL-Docs
+add_cat "clamtk*"               X-CFL-IR
+add_cat "stegosuite*"           X-CFL-Stego
+add_cat "gqrx*"                 X-CFL-SDR
+# Kali/Parrot-parity GUI applications
+add_cat "zenmap*"               X-CFL-Network
+add_cat "etherape*"             X-CFL-Network
+add_cat "inspectrum*"           X-CFL-SDR
+add_cat "chirp*"                X-CFL-SDR
+add_cat "gnuradio*"             X-CFL-SDR
+add_cat "scantool*"             X-CFL-Acquisition
+
+# Prune launchers whose binary did not make it into the image
+for f in "$APPS"/cfl-*.desktop; do
+    [ -e "$f" ] || continue
+    bin=$(grep -m1 '^Exec=' "$f" | sed 's/^Exec=//; s/^sudo //; s/ .*//')
+    [ -n "$bin" ] || continue
+    if ! command -v "$bin" >/dev/null 2>&1; then
+        echo "pruned: $(basename "$f") (missing binary: $bin)"
+        rm -f "$f"
+    fi
+done
+
+update-desktop-database "$APPS" 2>/dev/null || true
+echo "=== [menu] $(ls "$APPS"/cfl-*.desktop | wc -l) forensic launchers installed ==="

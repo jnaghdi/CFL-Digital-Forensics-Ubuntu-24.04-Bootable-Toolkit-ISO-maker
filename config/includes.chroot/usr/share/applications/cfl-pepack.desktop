@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pepack
+Comment=PE packer detector
+Exec=mate-terminal --hide-menubar -t "pepack" -- cfl-run pepack
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-MalwareRE;
+Keywords=forensics;malware-re;

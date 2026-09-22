@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=exifprobe
+Comment=EXIF deep inspection
+Exec=mate-terminal --hide-menubar -t "exifprobe" -- cfl-run exifprobe
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Docs;
+Keywords=forensics;docs;

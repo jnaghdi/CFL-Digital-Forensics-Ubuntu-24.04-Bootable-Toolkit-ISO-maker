@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=metagoofil
+Comment=Document metadata OSINT
+Exec=mate-terminal --hide-menubar -t "metagoofil" -- cfl-run metagoofil
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-OSINT;
+Keywords=forensics;osint;

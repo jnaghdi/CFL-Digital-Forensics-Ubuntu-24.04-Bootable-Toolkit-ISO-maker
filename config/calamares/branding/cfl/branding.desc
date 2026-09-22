@@ -1,0 +1,34 @@
+---
+componentName: cfl
+
+# Welcome-window strings shown by Calamares.
+strings:
+    productName:         CFL Forensics
+    version:             @CFL_VERSION@
+    shortVersion:        @CFL_VERSION@
+    versionedName:       CFL Forensics @CFL_VERSION@
+    shortVersionedName:  CFL Forensics @CFL_VERSION@
+    shortProductName:    CFL Forensics
+    bootloaderEntryName: ubuntu
+    productUrl:          @CFL_URL@
+    supportUrl:          @CFL_URL@
+    knownIssuesUrl:      @CFL_URL@
+    releaseNotesUrl:     @CFL_URL@
+
+# The GRUB/EFI entry the installed system registers must be "ubuntu" so the
+# Ubuntu-signed grubx64.efi (built-in prefix /EFI/ubuntu) works under Secure
+# Boot; the human-readable label is set via GRUB_DISTRIBUTOR instead.
+
+images:
+    productLogo:    "logo.png"
+    productIcon:    "logo.png"
+    productWelcome: "welcome.png"
+
+slideshow: "show.qml"
+
+style:
+    sidebarBackground:        "#071426"
+    sidebarText:              "#e8eef6"
+    sidebarTextSelect:        "#ffffff"
+    sidebarTextCurrent:       "#ffffff"
+    sidebarBackgroundSelected: "#123a6e"

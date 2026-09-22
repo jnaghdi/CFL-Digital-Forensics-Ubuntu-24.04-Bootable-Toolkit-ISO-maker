@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=arp-scan
+Comment=ARP host discovery
+Exec=mate-terminal --hide-menubar -t "arp-scan" -- cfl-run arp-scan
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

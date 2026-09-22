@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ngrep
+Comment=Network grep
+Exec=mate-terminal --hide-menubar -t "ngrep" -- cfl-run ngrep
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Network;
+Keywords=forensics;network;

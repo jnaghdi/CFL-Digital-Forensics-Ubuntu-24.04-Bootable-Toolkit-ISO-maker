@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=testdisk
+Comment=Partition and filesystem recovery
+Exec=mate-terminal --hide-menubar -t "testdisk" -- cfl-run testdisk
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-Acquisition;
+Keywords=forensics;acquisition;

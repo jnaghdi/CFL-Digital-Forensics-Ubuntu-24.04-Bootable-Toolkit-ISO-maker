@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bladeRF CLI
+Comment=Interactive shell for a connected bladeRF device
+Exec=mate-terminal --hide-menubar -t "bladeRF CLI" -- cfl-run bladeRF-cli -i
+Icon=utilities-terminal
+Terminal=false
+Categories=X-CFL-SDR;
+Keywords=forensics;
