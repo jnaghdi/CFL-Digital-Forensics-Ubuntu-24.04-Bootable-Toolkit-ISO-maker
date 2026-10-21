@@ -1,0 +1,20 @@
+#!/bin/sh
+# cfl-install-prebootloader: run by the CFL Forensics installer (Calamares
+# shellprocess, chrooted into the new system) just before the bootloader
+# module. Makes sure the installed system has a kernel and an initramfs in
+# /boot before grub-install and update-grub run. In the normal case the
+# kernel is already present (it is part of the squashfs) and this is a no-op.
+set -u
+
+KVER=$(ls /boot/vmlinuz-* 2>/dev/null | sed 's|.*/vmlinuz-||' | sort -V | tail -1)
+if [ -z "$KVER" ]; then
+    KPKG=$(dpkg-query -W -f='${Package}\n' 'linux-image-*' 2>/dev/null | grep -v -- -dbg | sort -V | tail -1)
+    KVER=${KPKG#linux-image-}
+    if [ -f /cdrom/casper/vmlinuz ]; then
+        cp /cdrom/casper/vmlinuz "/boot/vmlinuz-${KVER:-generic}"
+    fi
+fi
+if [ -n "$KVER" ] && [ ! -e "/boot/initrd.img-$KVER" ]; then
+    update-initramfs -c -k "$KVER" || true
+fi
+exit 0

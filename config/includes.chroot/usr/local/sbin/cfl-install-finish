@@ -1,0 +1,39 @@
+#!/bin/sh
+# cfl-install-finish: run by the CFL Forensics installer (Calamares
+# shellprocess, chrooted into the new system) after the bootloader and
+# initramfs modules.
+#   1. Secure-Boot removable-media fallback: if nothing else owns
+#      EFI/BOOT/BOOTX64.EFI, copy the signed shim chain there so the machine
+#      still boots CFL Forensics from the default path. An existing
+#      BOOTX64.EFI (Windows, another shim) is never overwritten, so a
+#      dual-boot stays intact.
+#   2. Strip the live-session-only pieces from the installed system.
+set -u
+
+EFI=/boot/efi/EFI
+if [ -d "$EFI/ubuntu" ] && [ ! -e "$EFI/BOOT/BOOTX64.EFI" ] && [ ! -e "$EFI/Boot/bootx64.efi" ]; then
+    mkdir -p "$EFI/BOOT"
+    if [ -f /usr/lib/shim/shimx64.efi.signed.latest ]; then
+        cp /usr/lib/shim/shimx64.efi.signed.latest "$EFI/BOOT/BOOTX64.EFI"
+    elif [ -f /usr/lib/shim/shimx64.efi.signed ]; then
+        cp /usr/lib/shim/shimx64.efi.signed "$EFI/BOOT/BOOTX64.EFI"
+    fi
+    [ -f /usr/lib/shim/mmx64.efi ] && cp /usr/lib/shim/mmx64.efi "$EFI/BOOT/"
+    [ -f "$EFI/ubuntu/grubx64.efi" ] && cp "$EFI/ubuntu/grubx64.efi" "$EFI/BOOT/grubx64.efi"
+fi
+
+rm -f /etc/sudoers.d/casper /etc/sudoers.d/cfl-live
+rm -f /etc/systemd/system/multi-user.target.wants/cfl-live.service \
+      /etc/systemd/system/graphical.target.wants/cfl-live.service
+rm -f /usr/lib/systemd/system/cfl-live.service /etc/systemd/system/cfl-live.service
+rm -f /etc/xdg/autostart/cfl-live-session.desktop /etc/xdg/autostart/cfl-maybe-install.desktop
+rm -f /etc/polkit-1/rules.d/49-cfl-live.rules
+rm -f /etc/skel/Desktop/install-cfl-forensics.desktop /root/Desktop/install-cfl-forensics.desktop
+# the live user only exists in the live session's overlay, but be safe
+if id "@LIVE_USER@" >/dev/null 2>&1 && [ "$(id -u @LIVE_USER@)" = "1000" ]; then
+    deluser --remove-home "@LIVE_USER@" 2>/dev/null || true
+fi
+systemctl enable gdm.service 2>/dev/null || true
+systemctl unmask apt-daily.service apt-daily-upgrade.service 2>/dev/null || true
+update-desktop-database /usr/share/applications 2>/dev/null || true
+exit 0

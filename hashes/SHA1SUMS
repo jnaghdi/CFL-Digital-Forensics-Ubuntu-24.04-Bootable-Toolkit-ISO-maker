@@ -3,7 +3,7 @@ e7b9127c03c5f58c4ea97164ec7bf39676775bba  .github/ISSUE_TEMPLATE/tool_request.md
 63499bcf8bc7f9666ef282c40530276dab90259d  .github/PULL_REQUEST_TEMPLATE.md
 8416102676ac04ed418448f252173157abd4fe84  .github/workflows/ci.yml
 4f1d70895fc8e241d9c13dfe400972980b4cc73e  .gitignore
-b717b5609d4936986ee6db1ecd4832d8d935bdc4  CHANGELOG.md
+7504794483ec7510104bb470b69e5e5633b23880  CHANGELOG.md
 2dd4f17e7c45683bf39196582669f2b6525c6ade  CONTRIBUTING.md
 18e4da10eae55f66d5f11b7c72eb12ba80a5cd28  DESCRIPTION.md
 e5de3023608386611f30a44922444dd341125c2b  LICENSE
@@ -31,11 +31,11 @@ a61bf4cf7d9024fe1abb068844c811cc4509a51f  config/calamares/modules/initramfs.con
 f44e6da10c093ef0a0f6a05546bdd49a6d02d7b8  config/calamares/modules/machineid.conf
 5534183ac8982bd89b24a3165d36ba33616ec73e  config/calamares/modules/mount.conf
 29e0c3615294958e3ca433eeab7a7199be318946  config/calamares/modules/networkcfg.conf
-8291f9511ec6da59f751398b8c5a79b785493e66  config/calamares/modules/packages.conf
+afd04deabdac149866692463f4844856f9e96b77  config/calamares/modules/packages.conf
 ad5221f67c728efe1a3fa55e3942e42a28b52a90  config/calamares/modules/partition.conf
 7c0685799a22488d477da451219b0bdb217c8f57  config/calamares/modules/services-systemd.conf
-c28076ba4c0757af1ee6a707075f3d05830ce9f8  config/calamares/modules/shellprocess_cflfinish.conf
-53b2b532b34ed797759c7ad319258a2526921f8d  config/calamares/modules/shellprocess_cflprebootloader.conf
+2ab004ac119ec99451c695d1937d3b2d182a7276  config/calamares/modules/shellprocess_cflfinish.conf
+6434528ec6037d5426a831dc03c4d7f8f51065c1  config/calamares/modules/shellprocess_cflprebootloader.conf
 f1715defd2b1e1e98b39db91dac5b48b72c8874a  config/calamares/modules/unpackfs.conf
 826c6b53586f9e5287db8d2ed9bfeb3d932f9c26  config/calamares/modules/users.conf
 4914bf8e536890147d3933af205b249dc87afc1a  config/calamares/modules/welcome.conf
@@ -73,6 +73,8 @@ e91d8851e8ecaa1569af49c06adbca3623310965  config/includes.chroot/usr/local/bin/c
 57077122e2f9dde8517a1406368fca97f0541bec  config/includes.chroot/usr/local/bin/cfl-tools
 d215c6204b5b2fd8f1adf01f4638a4c8308c8acc  config/includes.chroot/usr/local/bin/evidence-mount
 6d8cd4601cb2f57d3e14cd87b77b6d4221e37cca  config/includes.chroot/usr/local/bin/forensics-mode
+fd87fdd2b89bca5adb035286b3a9163af781228b  config/includes.chroot/usr/local/sbin/cfl-install-finish
+c35064f0e354cfb6ac4e101961c4e53a62097d4b  config/includes.chroot/usr/local/sbin/cfl-install-prebootloader
 cc6d210ad04273e259d66adc6785dc0e926055b4  config/includes.chroot/usr/local/sbin/cfl-live-setup
 bed0573af143ba2dbbd3d43d2093113783746fd5  config/includes.chroot/usr/share/applications/cfl-adb.desktop
 06ffec159bc5a1b66ed8841f1762d4445bd550f5  config/includes.chroot/usr/share/applications/cfl-aeskeyfind.desktop
@@ -448,12 +450,12 @@ f5bb8fa5c0d03ffce1910bda6c1d81a4cee38463  docs/CSI-COMPARISON.md
 33d3241fad418ff6e6501ea418f57974faf890b5  docs/POST-INSTALL.md
 08d2685f6864099f24845eee27af525e25a609d8  docs/TOOL-CATALOGUE.md
 9904abc05eb20fc4a7588a9fb68d2bf258aa43ea  docs/TOOL-LIST.md
-fda8874431387b5a10cb016d9146cd74244322de  docs/UBUNTU-PORT-NOTES.md
+1405d06749f51381ec60bc2c5fb67a4db1c4e281  docs/UBUNTU-PORT-NOTES.md
 d9b0713f6b730b8d3e4d14c6facc616e8be816ea  scripts/check-undefined-functions.sh
 5d5f5e000eb26b776cb4298d8c62488ac2ff79f7  scripts/fetch-ubuntu-keyring.sh
 d4c51f2e6a870520b090646d8a69708a1675af5a  scripts/make-hashset.sh
 ef9aa8d163d8d96522cdfcd28f105a7df15aef20  scripts/make-tool-list.sh
 b93e6b3d8a1acdf81c8358f597a61b811780acdf  scripts/test-iso-qemu.sh
-89d76332944eda3ad0e9d43222b8b8ee4fdafd9b  scripts/test-release.sh
+8039484989e3d580888e3fd604df65736c781761  scripts/test-release.sh
 b9d87bc4ec801a83587ee0be92d0177ad44c89f1  scripts/verify-packages.sh
 40ee078c46ad164541597985edf198939750650c  scripts/write-usb.sh

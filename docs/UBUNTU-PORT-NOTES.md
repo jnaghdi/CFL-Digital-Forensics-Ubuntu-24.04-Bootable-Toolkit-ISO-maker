@@ -166,10 +166,19 @@ is ours, written to the 3.3 schema:
 - Install alongside is pre-selected (`initialPartitioningChoice: alongside`),
   and the `welcome` module's `requiredStorage` sets the floor so CFL Forensics
   can never be given less than the configured **@INSTALL_MIN_GIB@ GiB**.
-- Two `shellprocess` instances run just before and after the bootloader stage - 
-  one ensures the target has a kernel + initrd present (the live kernel lives on
-  the ISO under `/casper`, not inside the squashfs), the other handles the EFI
-  fallback and removes the live-only files.
+- Two `shellprocess` instances run just before and after the bootloader stage:
+  `/usr/local/sbin/cfl-install-prebootloader` ensures the target has a kernel
+  and initrd in `/boot`, and `/usr/local/sbin/cfl-install-finish` handles the
+  Secure-Boot removable-media fallback and removes the live-only files. The
+  logic deliberately lives in real scripts shipped in the image, called by path.
+  Calamares expands dollar-variables in shellprocess commands itself and in 3.3
+  refuses to run a command containing any variable it does not define (only
+  `ROOT` and `USER`), so an inline script with its own variables aborts the
+  install with "Could not run command ... missing variables". The static suite
+  rejects any dollar sign in a shellprocess config.
+- `packages.conf` uses `try_remove` with real package names only (`casper`,
+  `calamares`, `memtest86+`); a `remove` of a name that is not a package would
+  fail the install at that step.
 
 ## 7a. GRUB packages and the Secure-Boot chain
 

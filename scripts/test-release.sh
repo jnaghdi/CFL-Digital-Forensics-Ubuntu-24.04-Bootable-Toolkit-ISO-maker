@@ -79,6 +79,23 @@ else
     skip "python3-yaml not installed"
 fi
 
+echo "== 4b. installer shellprocess commands contain no shell variables =="
+# Calamares expands dollar-variables in shellprocess commands itself and refuses
+# to run a command with any it does not define (only ROOT and USER). An inline
+# script with its own variables aborts the whole install with "Could not run
+# command". The logic must live in a real script in the image, called by path.
+if grep -lq '\$' config/calamares/modules/shellprocess_*.conf 2>/dev/null; then
+    bad "a shellprocess .conf contains a dollar sign: $(grep -l '\$' config/calamares/modules/shellprocess_*.conf | tr '\n' ' ')"
+else
+    ok "shellprocess configs are variable-free (logic lives in /usr/local/sbin scripts)"
+fi
+# and every script those configs call must exist in the overlay and be executable
+sp_missing=0
+for cmd in $(grep -hoE 'command: */usr/local/sbin/[A-Za-z0-9_.-]+' config/calamares/modules/shellprocess_*.conf | awk '{print $2}'); do
+    if [ -x "config/includes.chroot$cmd" ]; then :; else bad "installer calls $cmd but config/includes.chroot$cmd is missing or not executable"; sp_missing=1; fi
+done
+[ "$sp_missing" -eq 0 ] && ok "every installer script the shellprocess configs call is shipped and executable"
+
 echo "== 5. desktop entries =="
 if have desktop-file-validate; then
     n=0

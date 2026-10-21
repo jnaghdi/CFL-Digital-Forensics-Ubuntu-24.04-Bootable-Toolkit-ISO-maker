@@ -2,6 +2,16 @@
 
 All notable changes to CFL Forensics are recorded here.
 
+## [2.0.1] - 2026-10-21
+
+### Fixed
+- Installer failed at the end of "install alongside Windows" with "Could not
+  run command ... missing variables KVER, SRC, ...". Calamares expands variables
+  in shellprocess commands itself; the pre-bootloader and finish logic now live
+  in `/usr/local/sbin/cfl-install-prebootloader` and `cfl-install-finish` and
+  the configs call them by path with no variables. `packages.conf` now uses
+  `try_remove` and only real package names. The static suite checks both.
+
 ## [2.0] - 2026-09
 
 **Ground-up rebuild on Ubuntu 24.04 LTS** (previously Debian 13 / live-build).
