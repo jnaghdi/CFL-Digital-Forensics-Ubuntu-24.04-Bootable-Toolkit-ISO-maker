@@ -87,6 +87,12 @@ ISO_TREE="$WORK_DIR/iso-tree"
 STAMPS="$WORK_DIR/stamps"
 BUILD_LOG="$WORK_DIR/build.log"
 BUILD_DATE=$(date -u +%Y%m%d)
+# The source commit is stamped into the image (/etc/cfl-forensics-release and
+# /.disk/info) so a booted system can always say which source built it.
+SRC_COMMIT=$(git -C "$PROJECT_DIR" rev-parse --short=12 HEAD 2>/dev/null || echo "unversioned")
+if [ "$SRC_COMMIT" != "unversioned" ] && ! git -C "$PROJECT_DIR" diff --quiet 2>/dev/null; then
+    SRC_COMMIT="$SRC_COMMIT+modified"
+fi
 INSTALL_REQ_GIB=$((INSTALL_MIN_GIB - 2))   # Calamares adds ~2 GiB to requiredStorage
 KERNEL_HEADERS_PKG="${KERNEL_PKG/linux-generic/linux-headers-generic}"
 
@@ -697,6 +703,21 @@ stage_overlay() {
     rm -rf "$CHROOT/etc/calamares"
     mkdir -p "$CHROOT/etc/calamares"
     rsync -a config/calamares/ "$CHROOT/etc/calamares/"
+    # Guard: Calamares expands dollar-variables in shellprocess commands itself
+    # and aborts the install ("Could not run command ... missing variables") on
+    # any it does not define. The logic must live in scripts called by path.
+    # Fail the build here rather than ship an ISO whose installer cannot work.
+    local spc spcmd
+    for spc in "$CHROOT"/etc/calamares/modules/shellprocess_*.conf; do
+        [ -e "$spc" ] || continue
+        if grep -q '\$' "$spc"; then
+            die "installer config $(basename "$spc") contains a shell variable, so the installer would fail at that step.
+This source tree predates the installer fix (v2.0.1). Update it (git pull, or a fresh clone) and rebuild:  sudo ./build.sh --from overlay"
+        fi
+    done
+    for spcmd in $(grep -hoE 'command: */usr/local/sbin/[A-Za-z0-9_.-]+' "$CHROOT"/etc/calamares/modules/shellprocess_*.conf 2>/dev/null | awk '{print $2}'); do
+        [ -x "$CHROOT$spcmd" ] || die "the installer calls $spcmd but it is missing from the image (config/includes.chroot$spcmd)"
+    done
 
     # placeholders in every text file we ship
     grep -rlI '@CFL_[A-Z_]*@\|@UBUNTU_[A-Z_]*@\|@LIVE_[A-Z_]*@\|@INSTALL_[A-Z_]*@\|@ISO_VOLID@\|@BUILD_DATE@' \
@@ -773,6 +794,7 @@ EOF
     fi
     cat > "$CHROOT/etc/cfl-forensics-release" <<EOF
 $CFL_NAME $CFL_VERSION "$CFL_CODENAME" - Ubuntu $UBUNTU_VERSION LTS ($UBUNTU_SUITE) - build $BUILD_DATE
+source: commit $SRC_COMMIT
 $CFL_PUBLISHER
 EOF
 
@@ -1122,7 +1144,7 @@ EOF
 stage_iso() {
     log "[iso] $ISO_NAME"
     mkdir -p "$ISO_TREE/.disk"
-    echo "$CFL_NAME $CFL_VERSION \"$CFL_CODENAME\" - Release $ARCH ($BUILD_DATE)" > "$ISO_TREE/.disk/info"
+    echo "$CFL_NAME $CFL_VERSION \"$CFL_CODENAME\" - Release $ARCH ($BUILD_DATE) [$SRC_COMMIT]" > "$ISO_TREE/.disk/info"
     : > "$ISO_TREE/.disk/base_installable"
     echo "full_cd/single" > "$ISO_TREE/.disk/cd_type"
     echo "$CFL_URL" > "$ISO_TREE/.disk/release_notes_url"
@@ -1157,6 +1179,7 @@ stage_iso() {
 # =============================================================================
 # main
 # =============================================================================
+ran_any=0
 for s in "${STAGES[@]}"; do
     if stamped "$s"; then
         info "stage $s: done"
@@ -1164,11 +1187,19 @@ for s in "${STAGES[@]}"; do
     fi
     "stage_$s"
     stamp "$s"
+    ran_any=1
 done
 umount_chroot
 
 elapsed=$(( $(date +%s) - start_ts ))
+if [ "$ran_any" = 0 ]; then
+    warn "NOTHING WAS REBUILT: every stage was already complete, so the ISO in $OUT_DIR is the one from the previous build
+      (built $(date -r "$OUT_DIR/$ISO_NAME" '+%Y-%m-%d %H:%M' 2>/dev/null || echo 'unknown date')). It does NOT include any source changes made since.
+      To pick up changed files:   sudo ./build.sh --from overlay      (configs, launchers, installer)
+      To rebuild everything:      sudo ./build.sh --clean"
+fi
 log "Build finished in $((elapsed / 60)) min"
+info "source    : commit $SRC_COMMIT   (stamped into /etc/cfl-forensics-release in the image)"
 ls -lh "$OUT_DIR/$ISO_NAME" | awk '{print "    " $5 "  " $9}'
 info "checksums : $OUT_DIR/SHA256SUMS"
 info "manifest  : $OUT_DIR/${ISO_NAME%.iso}.manifest"

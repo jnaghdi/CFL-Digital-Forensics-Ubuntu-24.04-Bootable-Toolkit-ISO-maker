@@ -2,6 +2,23 @@
 
 All notable changes to CFL Forensics are recorded here.
 
+## [2.0.2] - 2026-10-22
+
+### Added
+- The build stamps its source commit into the image (`/etc/cfl-forensics-release`
+  and `/.disk/info`), so a booted live or installed system can always say which
+  source produced it: `cat /etc/cfl-forensics-release`.
+- `build.sh` now refuses, at the overlay stage, to build an image whose
+  installer configs contain shell variables or call a script that is not in
+  the image. An out-of-date source tree can no longer produce an ISO with a
+  broken installer.
+- When every stage is already complete, `build.sh` says loudly that nothing was
+  rebuilt and the ISO is the previous one, instead of printing a success
+  summary that looks like a fresh build.
+- `CFL_VERSION` is 2.0.2, so the ISO filename changes
+  (`cfl-forensics-2.0.2-noble-amd64.iso`) and cannot be confused with an
+  earlier image.
+
 ## [2.0.1] - 2026-10-21
 
 ### Fixed

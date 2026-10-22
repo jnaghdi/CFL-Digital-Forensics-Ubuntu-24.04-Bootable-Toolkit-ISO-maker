@@ -1,8 +1,8 @@
 CFL Forensics build-source hash set
-generated : 2026-10-21 19:10:49 UTC
+generated : 2026-10-22 15:56:17 UTC
 files     : 461
-commit    : 437f5fc92cc0efd186bcb4445fd83c146a8c5a6e (with local changes)
-version   : 2.0
+commit    : eea45b7a48b0482b00f2ef0997b1120440340dab (with local changes)
+version   : 2.0.2
 excluded  : work/ iso/ cache/ .git/ hashes/ *.iso *.log
 
 verify all files:   sha256sum -c hashes/SHA256SUMS
